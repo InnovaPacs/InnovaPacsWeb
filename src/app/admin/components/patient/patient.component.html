@@ -1,0 +1,21 @@
+<div class="container mt-12">
+  <h1>Patients</h1>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Patient id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let patient of patients">
+        <th scope="row">{{ patient.patId }}</th>
+        <th scope="row">{{ patient.middleName }} {{ patient.familyName }} {{ patient.givenName }}</th>
+        <button class="btn btn-success" type="button" [routerLink]="['/admin/studies', patient.pk]" >Studies</button>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

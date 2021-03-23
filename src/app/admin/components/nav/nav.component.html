@@ -1,0 +1,14 @@
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="['/']">Innova Pacs</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" (click)="handleButton()">
+        Menu
+    </button>
+
+    <!-- Navbar-->
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="brand" [routerLink]="['/admin']">Jose Luis</a></li>
+    </ul>
+</nav>

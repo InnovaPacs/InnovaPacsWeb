@@ -1,5 +1,5 @@
 {
-  "name": "innova-pacs-dev",
+  "name": "innova-pacs-web",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,7 +19,11 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@popperjs/core": "^2.9.1",
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.6.0",
     "rxjs": "~6.4.0",
+    "sweetalert2": "^10.15.6",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
