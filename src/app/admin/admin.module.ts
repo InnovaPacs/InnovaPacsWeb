@@ -12,10 +12,11 @@ import { FullStudiesComponent } from './components/full-studies/full-studies.com
 import { UserComponent } from './components/user/user.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InstitutionUserFormComponent } from './components/institution-user-form/institution-user-form.component';
 
 
 @NgModule({
-  declarations: [PatientComponent, StudyComponent, LayoutComponent, FooterComponent, NavComponent, MenuComponent, FullStudiesComponent, UserComponent, UserFormComponent],
+  declarations: [PatientComponent, StudyComponent, LayoutComponent, FooterComponent, NavComponent, MenuComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

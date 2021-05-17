@@ -1,0 +1,36 @@
+<div>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title pb-3">{{ title }}</h5>
+            <form [formGroup] = "institutionUserForm" class="row" (ngSubmit)="onSubmit()">
+                
+                <label class="col-form-label col-md-2" for="userId" >Usuario:</label>
+                <div class="col-md-4 pb-3">
+                    <input readonly type="text" [value]="user.username" class="form-control" formControlName="userId" name="userId" id="userId" 
+                    [ngClass]="{ 'is-invalid': submitted && f.userId.errors }">
+                </div>
+
+                <label class="col-form-label col-md-2" for="institutionId" >Instituciones:</label>
+                <div class="col-md-4 pb-3">
+                    <select class="form-control" formControlName="institutionId" name="institutionId" id="institutionId"
+                    [ngClass]="{ 'is-invalid': submitted && f.institutionId.errors }">
+                        <option [ngValue]="null" disabled>Selecciona Institución</option>
+                        <option *ngFor="let institution of institutions" [ngValue]="institution.id" >{{ institution.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group row pl-3 col-sm-12">
+                    <div class="col-sm-6">
+                      <button class="btn btn-primary" type="submit"
+                      *ngIf="!institutionUser.id else elseBlock" >Crear</button>
+                    
+                      <ng-template #elseBlock>
+                          <button class="btn btn-primary" type="submit"
+                          >Editar</button>
+                      </ng-template>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

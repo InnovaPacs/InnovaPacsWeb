@@ -1,7 +1,8 @@
-export interface User {
-   id: number;
+export class User {
+	id: number;
 	email: string;
 	username: string;
 	active: boolean;
-   password: string
+  password: string;
+	institutions: string;
 }
