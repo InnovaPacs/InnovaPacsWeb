@@ -5,15 +5,11 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class StudyService {
+export class UserService {
   private API = environment.API;
   constructor(private http: HttpClient) { }
 
-  public findByPatientId(id: number) {
-    return this.http.get(`${this.API}/studies/patients/${id}`);
-  }
-
-  public findFullStudies() {
-    return this.http.get(`${this.API}/studies/full`);
+  public findAll() {
+    return this.http.get(`${this.API}/users/`);
   }
 }
