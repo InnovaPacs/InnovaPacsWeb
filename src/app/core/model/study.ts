@@ -5,4 +5,6 @@ export interface Study {
    studyId :  string;
    studyIuid :  string;
    patientFk : number;
+   description: string;
+   modality: string;
 }

@@ -1,0 +1,35 @@
+<div class="mt-12">
+  <h1 class="title-demo">Usuarios</h1>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Email</th>
+        <th scope="col">Nombre de usuarios</th>
+        <th scope="col">Estatus</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let user of users">
+        <th>{{ user.id }}</th>
+        <th>{{ user.email }}</th>
+        <th>{{ user.username }}</th>
+        <th [ngClass]="{'text-success': user.active, 'text-danger': !user.active }">{{ user.active ? 'Activo':'Inactivo'}}</th>
+        <th class="text-center"><button class="btn btn-success">Editar</button></th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 
+ <button class="btn btn-primary" type="submit"
+                      *ngIf="!app.id else elseBlock" >Crear</button>
+                      
+                      <ng-template #elseBlock>
+                          <button class="btn btn-primary" type="submit"
+                          >Editar</button>
+                      </ng-template>
+
+-->

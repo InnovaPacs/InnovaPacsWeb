@@ -4,6 +4,7 @@ import { Patient } from 'src/app/core/model/patient';
 import { Study } from 'src/app/core/model/study';
 import { PatientService } from 'src/app/core/service/patient.service';
 import { StudyService } from 'src/app/core/service/study.service';
+import { Util } from 'src/app/core/util/util';
 
 @Component({
   selector: 'app-study',
@@ -16,7 +17,8 @@ export class StudyComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private studyService: StudyService,
-    private patientService: PatientService) { }
+    private patientService: PatientService,
+    public util: Util) { }
 
   ngOnInit() {
     this.load();

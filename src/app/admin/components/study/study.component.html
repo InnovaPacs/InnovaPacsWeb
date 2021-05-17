@@ -1,19 +1,23 @@
-<div class="container mt-12">
-  <h1 *ngIf="patient">Studies of [{{ patient.middleName }} {{ patient.familyName }} {{ patient.givenName }}]</h1>
-
-  <table class="table table-hover">
+<div class="mt-12">
+  <h1 *ngIf="patient">Estudios de [{{ patient.middleName }} {{ patient.familyName }} {{ patient.givenName }}]</h1>
+  <hr>
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Study id</th>
-        <th scope="col">Creation Date</th>
-        <th scope="col">Actions</th>
+        <th scope="col">Id</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Fecha de Creación</th>
+        <th scope="col">Modalidad</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody >
       <tr *ngFor="let study of studies">
-        <th scope="row">{{ study.studyId }}</th>
-        <th scope="row">{{ study.createdTime }}</th>
-        <th scope="col"><button class="btn btn-success" (click)="viewStudy(study.studyIuid)">View</button></th>
+        <th>{{ study.studyId }}</th>
+        <th>{{ study.description }}</th>
+        <th>{{ study.createdTime }}</th>
+        <th><span [class]="util.badge(study.modality)">{{ study.modality }}</span></th>
+        <th><button class="btn btn-success" (click)="viewStudy(study.studyIuid)">Ver</button></th>
       </tr>
     </tbody>
   </table>

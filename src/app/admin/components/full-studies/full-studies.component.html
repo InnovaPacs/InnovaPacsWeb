@@ -1,0 +1,46 @@
+<div class="mt-12">
+  <h1>Todos los estudios</h1>
+  <hr>
+  
+  <div class="form-group">
+    <div class="form-group sm-12 mb-2">
+      <label for="search" class="sr-only">Buscar</label>
+      <input type="text" [formControl]="searchInput" class="form-control" id="search" placeholder="Buscar" 
+        (keyup)="search()">
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Paciente Id</th>
+          <th scope="col">Nombre Paciente</th>
+          <th scope="col">Fecha de Nacimiento</th>
+          <th scope="col">Genero</th>
+          <th scope="col">Fecha de Recepción</th>
+          <th scope="col">Fecha de Estudio</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Modalidad</th>
+          <th scope="col">Núm. Instancias</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let study of studiesAux">
+          <th>{{ study.patientId }}</th>
+          <th>{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</th>
+          <th>{{ study.birthDate }}</th>
+          <th class="text-center">{{ study.patientSex }}</th>
+          <th>{{ study.createdTime }}</th>
+          <th>{{ study.date }}</th>
+          <th>{{ study.desc }}</th>
+          <th class="text-center"><span [class]="util.badge(study.modality)">{{ study.modality }}</span></th>
+          <th class="text-center"><span class="badge badge-dark">{{ study.numInstances }}</span></th>
+          <th ><button class="btn btn-success" (click)="viewStudy(study.iuid)">Ver</button></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
