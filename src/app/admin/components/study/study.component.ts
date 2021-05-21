@@ -25,13 +25,20 @@ export class StudyComponent implements OnInit {
   }
 
   async load() {
+    this.util.loading();
     this.activatedRoute.params.subscribe( async params => {
       const patientId = params.pk;
       
       if (patientId) {
+
+        try {
           this.patient = await this.patientService.findById(patientId).toPromise() as Patient;
           this.studies = await this.studyService.findByPatientId(patientId)
           .toPromise() as Study[]; 
+          this.util.cancelLoading();
+        } catch (error) {
+          this.util.handleError(error);
+        } 
       }
     });
   }

@@ -30,6 +30,15 @@
                         </div>Usuarios
                     </a>
                 </div>
+                <div class="nav-item dropdown">
+                    <a class="nav-link" [routerLink]="['/login']" (click)="closeSession()" routerLinkActive="active">
+                        <div class="sb-nav-link-icon">
+                        <div routerLinkActive="active-icon">
+                            
+                        </div>
+                        </div>Cerrar sesión
+                    </a>
+                </div>
             </div>
         </div>
     </nav>

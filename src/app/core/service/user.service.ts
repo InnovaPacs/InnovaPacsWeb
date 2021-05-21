@@ -2,29 +2,30 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private API = environment.API;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   public findAll() {
-    return this.http.get(`${this.API}/users/`);
+    return this.http.get(`${this.API}api/v1/users/`, {'headers': this.authService.getHeader()});
   }
 
   public findById(id: number) {
-    return this.http.get(`${this.API}/users/${id}`);
+    return this.http.get(`${this.API}api/v1/users/${id}`, {'headers': this.authService.getHeader()});
   }
 
   public create(user: User) {
-    return this.http.post(`${this.API}/users/`, user);
+    return this.http.post(`${this.API}api/v1/users/`, user, {'headers': this.authService.getHeader()});
   }
 
   public update(user: User, id: number) {
     console.log('user: ',user);
     
-    return this.http.put(`${this.API}/users/${id}`, user);
+    return this.http.put(`${this.API}api/v1/users/${id}`, user, {'headers': this.authService.getHeader()});
   }
 }

@@ -32,11 +32,13 @@ export class LoginComponent implements OnInit {
     if (this.userForm.valid) {
       const user = this.userForm.value as Login;
       
-      this.authService.login(user).subscribe(response => {
+      this.authService.login(user).subscribe(response=> {
+        console.log(response);
+        
         this.authService.handleSession(response);
         this.router.navigate(['/admin']);
-      },
-      error => this.handleError(error));
+
+      });
 
     } else {
       this.userForm.markAllAsTouched();
@@ -44,9 +46,9 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(error): void {
-    if (error.status === 403 || error.status === 406) {
-      swal.fire('Oops...', 'Something went wrong with your account!', 'error');
-    }
+    console.log(error);
+    
+    swal.fire('Oops...', 'Something went wrong with your account!', 'error');
   }
 
   isValidField(field: string): boolean {

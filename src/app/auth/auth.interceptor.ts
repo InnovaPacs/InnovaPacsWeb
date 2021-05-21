@@ -17,16 +17,20 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private authService: AuthService, private router: Router) {}
   private handleAuthError(error: HttpErrorResponse): Observable<any> {
+    swal.fire('Oops...', error.message, 'error');
+
     if (error.status && error.status === 403) {
       this.router.navigateByUrl(`/`);
     }
+    
     return throwError(error);
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     swal.showLoading();
-    request = this.addToken(request);
-    return next.handle(request).pipe(catchError( error => this.handleAuthError(error))).pipe(finalize(() => swal.close()));
+    //request = this.addToken(request);
+    //return next.handle(request).pipe(catchError( error => this.handleAuthError(error))).pipe(finalize(() => swal.close()));
+    return next.handle(request).pipe(catchError( error => this.handleAuthError(error)));
   }
 
   private addToken(req: HttpRequest<any>): HttpRequest<any> {

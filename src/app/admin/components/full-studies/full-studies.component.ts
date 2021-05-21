@@ -21,10 +21,14 @@ export class FullStudiesComponent implements OnInit {
     this.load();
   }
 
-  async load() {
-    
-    this.studies = await this.studyService.findFullStudies().toPromise() as FullStudy[];
-    this.studiesAux = [... this.studies] ;
+  load() {
+    this.util.loading();
+    this.studyService.findFullStudies().subscribe(response => {
+      this.studies = response;
+      this.studiesAux = [... this.studies] ;
+      this.util.cancelLoading();
+
+    }, (error) => this.util.handleError(error));
   }
 
   public viewStudy(studyIuid: string){
@@ -34,7 +38,7 @@ export class FullStudiesComponent implements OnInit {
   }
 
   /**
-  * 
+  * Search in the array
   */
   public search(){
     this.studiesAux = this.util.filterArrWithString(this.studies, this.searchInput.value);

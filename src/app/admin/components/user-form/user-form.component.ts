@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/model/user';
 import { UserService } from 'src/app/core/service/user.service';
+import { Util } from 'src/app/core/util/util';
 
 @Component({
   selector: 'app-user-form',
@@ -18,7 +19,8 @@ export class UserFormComponent implements OnInit {
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private userService: UserService){ }
+              private userService: UserService,
+              private util: Util){ }
 
   ngOnInit() {
     this.load();
@@ -31,15 +33,16 @@ export class UserFormComponent implements OnInit {
   async load() {
     this.activatedRoute.params.subscribe( async params => {
       const id = params.id;
-      
       if (id) {
-        
+        this.util.loading();
         this.user = await this.userService.findById(id).toPromise() as User;
         
         if(this.user){
           this.userForm.patchValue(this.user);
           this.title = 'Editar usuario';
         }
+
+        this.util.cancelLoading();
       }
     });
   }
@@ -61,17 +64,20 @@ export class UserFormComponent implements OnInit {
     }
 
     this.user = this.userForm.value as User;
+    this.util.loading();
     
-    if (this.user.id !== null) {
-
-      const response = await this.userService.update(this.user, this.user.id).toPromise();
-      
-    } else {
-      
-      const response = await this.userService.create(this.user).toPromise();
+    try {
+      if (this.user.id !== null) {
+        const response = await this.userService.update(this.user, this.user.id).toPromise();
+        this.util.successMessage('El usuario se creo correctamente');
+      } else {
+        const response = await this.userService.create(this.user).toPromise();
+        this.util.successMessage('El usuario se actualizo correctamente');
+      }
+      this.router.navigate(['/admin/users']);
+    } catch (error) {
+      this.util.handleError(error);
     }
-
-    this.router.navigate(['/admin/users']);
   }
 
   get f() { return this.userForm.controls; }

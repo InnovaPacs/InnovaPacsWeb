@@ -16,6 +16,12 @@
                   [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
               </div>
 
+              <label class="col-form-label col-md-2" for="password" >Password:</label>
+              <div class="col-md-4 pb-3">
+                  <input type="text" class="form-control" formControlName="password" name="password" id="password" 
+                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+              </div>
+
               <div class="col-md-4 pb-3 ml-3">
                 <input class="form-check-input" type="checkbox" formControlName="active" id="active">
                 <label class="form-check-label" for="active">

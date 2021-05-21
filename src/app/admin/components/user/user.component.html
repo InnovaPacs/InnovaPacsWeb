@@ -1,6 +1,14 @@
 <div class="mt-12">
   <h1 class="title-demo">Usuarios</h1>
+  <button class="btn btn-success" [routerLink]="['/admin/users/form']">Nuevo Usuario</button>
   <hr>
+  <div class="form-group">
+    <div class="form-group sm-12 mb-2">
+      <label for="search" class="sr-only">Buscar</label>
+      <input type="text" [formControl]="searchInput" class="form-control" id="search" placeholder="Buscar" 
+        (keyup)="search()">
+    </div>
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -13,7 +21,7 @@
       </tr>
     </thead>
     <tbody >
-      <tr *ngFor="let user of users">
+      <tr *ngFor="let user of usersAux">
         <th>{{ user.id }}</th>
         <th>{{ user.email }}</th>
         <th>{{ user.username }}</th>

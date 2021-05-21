@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,24 @@ export class Util {
       });
       return arr;
     }
+  }
+
+  handleError(error){
+    swal.close();
+    swal.fire('Oops...', error.message, 'error');
+  }
+
+  successMessage(message){
+    swal.close();
+    swal.fire('¡Operación exitosa!', message, 'success');
+  }
+
+  loading(){
+    swal.close();
+    swal.showLoading();
+  }
+
+  cancelLoading(){
+    swal.close();
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
   
-  constructor() { }
+  constructor(private router: Router, private oauthService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  public closeSession(){
+    this.oauthService.closeSession();
   }
 }

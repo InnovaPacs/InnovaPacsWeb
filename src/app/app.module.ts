@@ -19,13 +19,6 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    }
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

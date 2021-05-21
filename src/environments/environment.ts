@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  API: 'http://localhost:8081/innova-pacs/api/v1'
+  API: 'http://localhost:8081/innova-pacs/',
+  CLIENT_ID: 'InnovaPacs',
+  CLIENT_SECRET: 'InnovaPacs2021',
+  GRANT_TYPE: 'password'
 };
 /*
  * For easier debugging in development mode, you can import the following file
