@@ -7,6 +7,7 @@
         <th scope="col">Id</th>
         <th scope="col">Nombre</th>
         <th scope="col">Genero</th>
+        <th scope="col">Email</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -15,9 +16,23 @@
         <th>{{ patient.patId }}</th>
         <th>{{ patient.middleName }} {{ patient.familyName }} {{ patient.givenName }}</th>
         <th>{{ patient.gender }}</th>
-        <button class="btn btn-success" type="button" [routerLink]="['/admin/studies', patient.pk]" >Estudios</button>
+        <th>{{ patient.email }}</th>
+        <th>
+          <div class="dropdown">
+            <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Acciones
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <button class="dropdown-item" [routerLink]="['/admin/studies', patient.pk]">Estudios</button>
+              <button class="dropdown-item" (click)="patientPk = patient.pk" data-toggle="modal" data-target="#configureEmailModal">Configurar email</button>
+            </div>
+          </div>
+        </th>
       </tr>
     </tbody>
   </table>
 </div>
+<!--Email configuration modal-->
+<app-configure-email [patientPk]="patientPk" (refreshEvent)="load()"></app-configure-email>
 

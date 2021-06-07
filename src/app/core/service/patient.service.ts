@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { EmailConfiguration } from '../model/emailConfiguration';
 import { Patient } from '../model/patient';
 import { AuthService } from './auth.service';
 
@@ -17,8 +18,10 @@ export class PatientService {
   }
 
   public findById(id: number) {
-    console.log(this.authService.getHeader());
-    
     return this.http.get(`${this.API}api/v1/patients/${id}`, {'headers': this.authService.getHeader()});
+  }
+
+  public configureEmail(emailConfiguration: EmailConfiguration) {
+    return this.http.put(`${this.API}api/v1/patients/`, emailConfiguration, {'headers': this.authService.getHeader()});
   }
 }

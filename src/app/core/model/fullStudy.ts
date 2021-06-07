@@ -14,4 +14,5 @@ export interface FullStudy {
 	modality: string;
   numInstances: number;
 	institution: string;
+	email: string;
 }

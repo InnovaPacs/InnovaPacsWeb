@@ -78,6 +78,7 @@
           <th scope="col">Nombre Paciente</th>
           <th scope="col">Fecha de Nacimiento</th>
           <th scope="col">Genero</th>
+          <th scope="col">Email</th>
           <th scope="col">Fecha de Recepción</th>
           <th scope="col">Fecha de Estudio</th>
           <th scope="col">Descripción</th>
@@ -87,22 +88,33 @@
         </tr>
       </thead>
       <tbody >
-        <tr *ngFor="let study of studiesAux">
+        <tr *ngFor="let study of studies">
           <th class="text-nowrap"> {{ study.institution }}</th>
           <th>{{ study.patientId }}</th>
           <th class="text-nowrap">{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</th>
           <th class="text-nowrap">{{ study.birthDate | date:'shortDate'}}</th>
           <th class="text-center">{{ study.patientSex }}</th>
+          <th class="text-center">{{ study.email }}</th>
           <th class="text-nowrap">{{ study.createdTime | date:'shortDate' }}</th>
           <th class="text-nowrap">{{ study.date | date:'shortDate' }}</th>
           <th>{{ study.desc }}</th>
           <th class="text-center"><span [class]="util.badge(study.modality)">{{ study.modality }}</span></th>
           <th class="text-center"><span class="badge badge-dark">{{ study.numInstances }}</span></th>
-          <th ><button class="btn btn-success" (click)="viewStudy(study.iuid)">Ver</button></th>
+          <th>
+            <div class="dropdown">
+              <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Acciones
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <button class="dropdown-item" (click)="viewStudy(study.iuid)">Ver</button>
+                <button class="dropdown-item" (click)="patientPk = study.patientPk" data-toggle="modal" data-target="#configureEmailModal">Configurar email</button>
+              </div>
+            </div>
+          </th>
         </tr>
       </tbody>
     </table>
-    <div *ngIf="studiesAux.length === 0" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <div *ngIf="studies.length === 0" class="alert alert-warning alert-dismissible fade show" role="alert">
       <strong>¡No hay estudios relacionados con la busqueda!</strong>.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -110,4 +122,7 @@
     </div>
   </div>
 </div>
+
+<!--Email configuration modal-->
+<app-configure-email [patientPk]="patientPk" (refreshEvent)="load()"></app-configure-email>
 

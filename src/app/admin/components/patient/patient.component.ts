@@ -10,6 +10,7 @@ import { Util } from 'src/app/core/util/util';
 })
 export class PatientComponent implements OnInit {
   public patients: Patient[] = [];
+  public patientPk;
 
   constructor(private patientService: PatientService, private util: Util) { }
 

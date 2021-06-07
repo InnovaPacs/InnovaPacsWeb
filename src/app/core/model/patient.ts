@@ -4,4 +4,5 @@ export interface Patient {
   middleName : string;
   familyName :  string;
   givenName :  string; 
+  email: string;
 }

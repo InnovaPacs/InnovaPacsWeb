@@ -13,10 +13,11 @@ import { UserComponent } from './components/user/user.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InstitutionUserFormComponent } from './components/institution-user-form/institution-user-form.component';
+import { ConfigureEmailComponent } from './components/configure-email/configure-email.component';
 
 
 @NgModule({
-  declarations: [PatientComponent, StudyComponent, LayoutComponent, FooterComponent, NavComponent, MenuComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent],
+  declarations: [PatientComponent, StudyComponent, LayoutComponent, FooterComponent, NavComponent, MenuComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

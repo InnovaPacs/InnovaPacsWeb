@@ -24,6 +24,7 @@ export class FullStudiesComponent implements OnInit {
   public filterForm: FormGroup;
   public institutions: Institution[] = [];
   public modalities: Modality[] = [];
+  public patientPk;
   
   constructor(private studyService: StudyService,
     private institutionService: InstitutionService,
@@ -42,7 +43,6 @@ export class FullStudiesComponent implements OnInit {
     this.util.loading();
     this.studyService.findFullStudies().subscribe(response => {
       this.studies = response;
-      this.studiesAux = [... this.studies] ;
       this.util.cancelLoading();
 
     }, (error) => this.util.handleError(error));
@@ -57,13 +57,6 @@ export class FullStudiesComponent implements OnInit {
     if(studyIuid){
       window.open(`http://192.168.0.7/viewer.html?studyUID=${studyIuid}`, '_blank');
     }
-  }
-
-  /**
-  * Search in the array
-  */
-  public search(){
-    this.studiesAux = this.util.filterArrWithString(this.studies, this.searchInput.value);
   }
 
   initForm() {
@@ -84,8 +77,6 @@ export class FullStudiesComponent implements OnInit {
     const filter = this.filterForm.value as StudyFilter;
     
     this.studies = await this.studyService.findFullStudiesWithFilter(filter).toPromise();
-    this.studiesAux = [... this.studies] ;
-
     console.log('result: ',this.studies);
   }
 
