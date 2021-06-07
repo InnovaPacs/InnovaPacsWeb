@@ -7,15 +7,11 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class InstitutionService {
+export class AttrsService {
   private API = environment.API;
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  public findAll() {
-    return this.http.get(`${this.API}api/v1/institutions`, {'headers': this.authService.getHeader()});
-  }
-
-  public configuration(institutionUser: InstitutionUser) {
-    return this.http.post(`${this.API}api/v1/institutions/configuration`, institutionUser, {'headers': this.authService.getHeader()});
+  public findAllModalities() {
+    return this.http.get(`${this.API}api/v1/attrs/modalities`, {'headers': this.authService.getHeader()});
   }
 }
