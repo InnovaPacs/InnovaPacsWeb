@@ -1,12 +1,71 @@
 <div class="mt-12">
-  <h1>Todos los estudios</h1>
-  <hr>
-  
-  <div class="form-group">
-    <div class="form-group sm-12 mb-2">
-      <label for="search" class="sr-only">Buscar</label>
-      <input type="text" [formControl]="searchInput" class="form-control" id="search" placeholder="Buscar" 
-        (keyup)="search()">
+  <div class="header">
+    <h1>Todos los estudios</h1>
+    <button (click)= "showFilter = !showFilter" class="btn btn-primary btn-small" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      {{ showFilter ? 'Cerrar filtro' : 'Filtrar' }}
+    </button>
+  </div>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <form [formGroup] = "filterForm" (ngSubmit)="filter()">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">Nombre</label>
+            <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nombre">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="institution">Institución</label>
+            <select class="form-control" formControlName="institution" name="institution" id="institution">
+              <option [ngValue]="null" disabled>Selecciona Institución</option>
+              <option *ngFor="let institution of institutions" [ngValue]="institution.name" >{{ institution.name }}</option>
+            </select>
+          </div>
+    
+          <div class="form-group col-md-4">
+            <label for="patientId">Paciente Id</label>
+            <input type="text" formControlName="patientId" class="form-control" id="patientId" placeholder="Paciente Id">
+          </div>
+    
+          <div class="form-group col-md-4">
+            <label for="gender">Genero</label>
+            <select class="form-control" formControlName="gender" name="gender" id="gender">
+              <option value="null" disabled>Selecciona genero</option>
+              <option value="F" >Femenino</option>
+              <option value="M" >Masculino</option>
+            </select>
+          </div>
+    
+          <div class="form-group col-md-4">
+            <label for="studyDescription">Descripción de estudio</label>
+            <input type="text" formControlName="studyDescription" class="form-control" id="studyDescription" placeholder="Descripción de estudio">
+          </div>
+    
+          <div class="form-group col-md-4">
+            <label for="modality">Modalidad</label>
+            <select class="form-control" formControlName="modality" name="modality" id="modality">
+              <option [ngValue]="null" disabled>Selecciona modalidad</option>
+              <option *ngFor="let modality of modalities" [ngValue]="modality.name" >{{ modality.name }}</option>
+            </select>
+          </div>
+    
+          <div class="form-group col-md-4">
+            <label for="instances">No. de intancias</label>
+            <input type="number" formControlName="instances" class="form-control" id="instances" placeholder="No. de intancias">
+          </div>
+    
+          <div class="form-group col-md-4">
+            <label for="studyDateInit">Fecha de estudio inicio</label>
+            <input type="date" (change) ="validateDate(0)" formControlName="studyDateInit" class="form-control" id="studyDateInit" placeholder="Fecha de estudio inicio">
+          </div>
+    
+          <div class="form-group col-md-4">
+            <label for="studyDateEnd">Fecha de estudio fin</label>
+            <input type="date" (change) ="validateDate(0)" formControlName="studyDateEnd" class="form-control" id="studyDateEnd" placeholder="Fecha de estudio fin">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mr-2">Buscar</button>
+        <button type="button" (click)="initForm()" class="btn btn-secondary">Limpiar filtro</button>
+      </form>
     </div>
   </div>
 
@@ -14,6 +73,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
+          <th scope="col">Institución</th>
           <th scope="col">Paciente Id</th>
           <th scope="col">Nombre Paciente</th>
           <th scope="col">Fecha de Nacimiento</th>
@@ -28,12 +88,13 @@
       </thead>
       <tbody >
         <tr *ngFor="let study of studiesAux">
+          <th class="text-nowrap"> {{ study.institution }}</th>
           <th>{{ study.patientId }}</th>
-          <th>{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</th>
-          <th>{{ study.birthDate }}</th>
+          <th class="text-nowrap">{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</th>
+          <th class="text-nowrap">{{ study.birthDate | date:'shortDate'}}</th>
           <th class="text-center">{{ study.patientSex }}</th>
-          <th>{{ study.createdTime }}</th>
-          <th>{{ study.date }}</th>
+          <th class="text-nowrap">{{ study.createdTime | date:'shortDate' }}</th>
+          <th class="text-nowrap">{{ study.date | date:'shortDate' }}</th>
           <th>{{ study.desc }}</th>
           <th class="text-center"><span [class]="util.badge(study.modality)">{{ study.modality }}</span></th>
           <th class="text-center"><span class="badge badge-dark">{{ study.numInstances }}</span></th>
@@ -41,6 +102,12 @@
         </tr>
       </tbody>
     </table>
+    <div *ngIf="studiesAux.length === 0" class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>¡No hay estudios relacionados con la busqueda!</strong>.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
   </div>
 </div>
 

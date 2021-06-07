@@ -1,5 +1,5 @@
 export interface FullStudy {
-   patientPk: number;
+  patientPk: number;
 	patientId: string;
 	personMiddleName: string;
 	personFamilyName: string;
@@ -12,5 +12,6 @@ export interface FullStudy {
 	iuid: string;
 	desc: string;
 	modality: string;
-   numInstances: number;
+  numInstances: number;
+	institution: string;
 }

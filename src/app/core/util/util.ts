@@ -19,6 +19,10 @@ export class Util {
       return 'badge badge-secondary';
     }else if(modality === 'MR'){
       return 'badge badge-info';
+    }else if(modality === 'DX'){
+      return 'badge badge-dark';
+    }else if (modality === 'XA'){
+      return 'badge badge-primary'
     }
   }
 
@@ -48,6 +52,11 @@ export class Util {
   handleError(error){
     swal.close();
     swal.fire('Oops...', error.message, 'error');
+  }
+
+  errorMessage(message){
+    swal.close();
+    swal.fire('Oops...', message, 'error');
   }
 
   successMessage(message){
