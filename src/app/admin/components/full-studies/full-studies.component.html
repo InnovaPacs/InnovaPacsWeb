@@ -94,7 +94,7 @@
           <th class="text-nowrap">{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</th>
           <th class="text-nowrap">{{ study.birthDate | date:'shortDate'}}</th>
           <th class="text-center">{{ study.patientSex }}</th>
-          <th class="text-center">{{ study.email }}</th>
+          <th class="text-center">{{ study.email }} {{study.studyUID}}</th>
           <th class="text-nowrap">{{ study.createdTime | date:'shortDate' }}</th>
           <th class="text-nowrap">{{ study.date | date:'shortDate' }}</th>
           <th>{{ study.desc }}</th>
@@ -108,6 +108,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <button class="dropdown-item" (click)="viewStudy(study.iuid)">Ver</button>
                 <button class="dropdown-item" (click)="patientPk = study.patientPk" data-toggle="modal" data-target="#configureEmailModal">Configurar email</button>
+                <button *ngIf="study.email" (click)="sendNotification(study.iuid)" class="dropdown-item" >Enviar estudio a paciente</button>
               </div>
             </div>
           </th>

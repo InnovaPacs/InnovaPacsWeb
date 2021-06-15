@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { compareDesc } from 'date-fns';
 import { compareAsc } from 'date-fns/fp';
 import { FullStudy } from 'src/app/core/model/fullStudy';
 import { StudyFilter } from 'src/app/core/model/fullStudy copy';
@@ -8,8 +7,10 @@ import { Institution } from 'src/app/core/model/institution';
 import { Modality } from 'src/app/core/model/modality';
 import { AttrsService } from 'src/app/core/service/attrs.service';
 import { InstitutionService } from 'src/app/core/service/institution.service';
+import { NotificationService } from 'src/app/core/service/notification.service';
 import { StudyService } from 'src/app/core/service/study.service';
 import { Util } from 'src/app/core/util/util';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-full-studies',
@@ -30,7 +31,8 @@ export class FullStudiesComponent implements OnInit {
     private institutionService: InstitutionService,
     private attrsService: AttrsService,
     public util: Util,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private notificationService: NotificationService ) { }
 
   ngOnInit() {
     this.load();
@@ -77,7 +79,7 @@ export class FullStudiesComponent implements OnInit {
     const filter = this.filterForm.value as StudyFilter;
     
     this.studies = await this.studyService.findFullStudiesWithFilter(filter).toPromise();
-    console.log('result: ',this.studies);
+    
   }
 
   public validateDate(option: number){
@@ -99,6 +101,28 @@ export class FullStudiesComponent implements OnInit {
         this.filterForm.patchValue({'studyDateEnd': null});
       }
     }
+  }
+
+  public sendNotification(iuid: string){
+    Swal.fire({
+      title: '¿Esta seguro de enviar correo?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, enviar!',
+      cancelButtonText: 'Cancelar',
+    }).then( async (result) => {
+      if (result.isConfirmed) {
+        this.notificationService.sendStudy(iuid).subscribe(() => {
+          Swal.fire(
+            'Estudio enviado!',
+            'El estudio se envio correctamente.',
+            'success'
+          );
+        });
+      }
+    })
   }
 }
 

@@ -33,8 +33,6 @@ export class StudyService {
     .set('studyDateEnd',filter.studyDateEnd !== null ? filter.studyDateEnd.toString() : null)
     .set('studyDateInit',filter.studyDateInit !== null ? filter.studyDateInit.toString() : null );
 
-    console.log(params);
-    
     return this.http.get<FullStudy[]>(`${this.API}api/v1/studies/filter`, {'headers': this.authService.getHeader(), params: params });
   }
 }

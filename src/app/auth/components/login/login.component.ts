@@ -33,8 +33,7 @@ export class LoginComponent implements OnInit {
       const user = this.userForm.value as Login;
       
       this.authService.login(user).subscribe(response=> {
-        console.log(response);
-        
+    
         this.authService.handleSession(response);
         this.router.navigate(['/admin']);
 
@@ -46,8 +45,6 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(error): void {
-    console.log(error);
-    
     swal.fire('Oops...', 'Something went wrong with your account!', 'error');
   }
 

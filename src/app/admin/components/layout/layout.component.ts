@@ -14,7 +14,6 @@ export class LayoutComponent implements OnInit {
   }
 
   handleMenuButton() {
-    console.log('handleMenuButton :::::');
     
     this.hideMenu = !this.hideMenu;
   }
