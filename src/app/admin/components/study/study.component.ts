@@ -5,6 +5,7 @@ import { Study } from 'src/app/core/model/study';
 import { PatientService } from 'src/app/core/service/patient.service';
 import { StudyService } from 'src/app/core/service/study.service';
 import { Util } from 'src/app/core/util/util';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-study',
@@ -14,7 +15,8 @@ import { Util } from 'src/app/core/util/util';
 export class StudyComponent implements OnInit {
   public studies: Study[] = [];
   public patient: Patient;
-
+  public faEye = faEye;
+  
   constructor(private activatedRoute: ActivatedRoute,
     private studyService: StudyService,
     private patientService: PatientService,

@@ -20,18 +20,30 @@
         <th>
           <div class="dropdown">
             <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <fa-icon class="icon" [icon]="faTasks"></fa-icon>
               Acciones
             </a>
-          
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <button class="dropdown-item" [routerLink]="['/admin/studies', patient.pk]">Estudios</button>
-              <button class="dropdown-item" (click)="patientPk = patient.pk" data-toggle="modal" data-target="#configureEmailModal">Configurar email</button>
+              <button class="dropdown-item" [routerLink]="['/admin/studies', patient.pk]">
+                <fa-icon class="icon" [icon]="faBook"></fa-icon>
+                  Estudios
+                </button>
+              <button class="dropdown-item" (click)="patientPk = patient.pk" data-toggle="modal" data-target="#configureEmailModal">
+                <fa-icon class="icon" [icon]="faCogs"></fa-icon>
+                  Configurar email
+                </button>
             </div>
           </div>
         </th>
       </tr>
     </tbody>
   </table>
+  <div *ngIf="patients.length === 0" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>¡No hay pacientes relacionados con la busqueda!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 </div>
 <!--Email configuration modal-->
 <app-configure-email [patientPk]="patientPk" (refreshEvent)="load()"></app-configure-email>

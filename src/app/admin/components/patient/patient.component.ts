@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/core/model/patient';
 import { PatientService } from 'src/app/core/service/patient.service';
 import { Util } from 'src/app/core/util/util';
+import { faTasks, faBook, faCogs } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-patient',
@@ -11,6 +12,9 @@ import { Util } from 'src/app/core/util/util';
 export class PatientComponent implements OnInit {
   public patients: Patient[] = [];
   public patientPk;
+  public faTasks = faTasks;
+  public faBook = faBook;
+  public faCogs = faCogs;
 
   constructor(private patientService: PatientService, private util: Util) { }
 

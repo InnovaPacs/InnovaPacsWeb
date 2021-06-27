@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { User } from 'src/app/core/model/user';
 import { UserService } from 'src/app/core/service/user.service';
 import { Util } from 'src/app/core/util/util';
+import { faUserPlus, faPenSquare, faCog, faTasks } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,11 @@ export class UserComponent implements OnInit {
   private users: User[] = [];
   public usersAux: User[] = [];
   public searchInput = new FormControl('');
-  
+  public faUserPlus = faUserPlus;
+  public faPenSquare = faPenSquare;
+  public faCogs = faCog;
+  public faTasks = faTasks;
+
   constructor(private userService: UserService, private util: Util) { }
 
   ngOnInit() {

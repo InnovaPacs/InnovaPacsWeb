@@ -2,7 +2,8 @@
   <div class="header">
     <h1>Todos los estudios</h1>
     <button (click)= "showFilter = !showFilter" class="btn btn-primary btn-small" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      {{ showFilter ? 'Cerrar filtro' : 'Filtrar' }}
+      <fa-icon class="icon" [icon]="faFilter"></fa-icon>
+      {{ showFilter ? 'Cerrar filtro' : 'Filtrar' }} 
     </button>
   </div>
   <div class="collapse" id="collapseExample">
@@ -63,8 +64,12 @@
             <input type="date" (change) ="validateDate(0)" formControlName="studyDateEnd" class="form-control" id="studyDateEnd" placeholder="Fecha de estudio fin">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary mr-2">Buscar</button>
-        <button type="button" (click)="initForm()" class="btn btn-secondary">Limpiar filtro</button>
+        <button type="submit" class="btn btn-primary mr-2">
+          <fa-icon class="icon" [icon]="faSearch"></fa-icon>
+          Buscar</button>
+        <button type="button" (click)="initForm()" class="btn btn-secondary">
+          <fa-icon class="icon" [icon]="faTrash"></fa-icon>
+          Limpiar filtro</button>
       </form>
     </div>
   </div>
@@ -103,12 +108,22 @@
           <th>
             <div class="dropdown">
               <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Acciones
+                <fa-icon class="icon" [icon]="faTasks"></fa-icon>
+                Acciones 
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <button class="dropdown-item" (click)="viewStudy(study.iuid)">Ver</button>
-                <button class="dropdown-item" (click)="patientPk = study.patientPk" data-toggle="modal" data-target="#configureEmailModal">Configurar email</button>
-                <button *ngIf="study.email" (click)="sendNotification(study.iuid)" class="dropdown-item" >Enviar estudio a paciente</button>
+                <button class="dropdown-item" (click)="viewStudy(study.iuid)">
+                  <fa-icon class="icon" [icon]="faEye"></fa-icon>
+                  Ver
+                </button>
+                <button class="dropdown-item" (click)="patientPk = study.patientPk" data-toggle="modal" data-target="#configureEmailModal">
+                  <fa-icon class="icon" [icon]="faCogs"></fa-icon>
+                  Configurar email
+                </button>
+                <button *ngIf="study.email" (click)="sendNotification(study.iuid)" class="dropdown-item" >
+                  <fa-icon class="icon" [icon]="faShareAlt"></fa-icon>
+                  Enviar estudio a paciente
+                </button>
               </div>
             </div>
           </th>
@@ -116,7 +131,7 @@
       </tbody>
     </table>
     <div *ngIf="studies.length === 0" class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong>¡No hay estudios relacionados con la busqueda!</strong>.
+      <strong>¡No hay estudios relacionados con la busqueda!</strong>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>

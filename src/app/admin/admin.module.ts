@@ -14,14 +14,15 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InstitutionUserFormComponent } from './components/institution-user-form/institution-user-form.component';
 import { ConfigureEmailComponent } from './components/configure-email/configure-email.component';
-
+import { FontAwesomeModule }from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [PatientComponent, StudyComponent, LayoutComponent, FooterComponent, NavComponent, MenuComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FontAwesomeModule
   ]
 })
 export class AdminModule { }

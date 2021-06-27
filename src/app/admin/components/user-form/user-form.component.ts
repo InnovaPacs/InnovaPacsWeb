@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/model/user';
 import { UserService } from 'src/app/core/service/user.service';
 import { Util } from 'src/app/core/util/util';
+import { faPenSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user-form',
@@ -15,6 +16,7 @@ export class UserFormComponent implements OnInit {
   public title = 'Registrar usuario';
   public userForm: FormGroup;
   public submitted = false;
+  public faPenSquare = faPenSquare;
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,

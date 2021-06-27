@@ -17,7 +17,12 @@
         <th>{{ study.description }}</th>
         <th>{{ study.createdTime }}</th>
         <th><span [class]="util.badge(study.modality)">{{ study.modality }}</span></th>
-        <th><button class="btn btn-success" (click)="viewStudy(study.studyIuid)">Ver</button></th>
+        <th>
+          <button class="btn btn-success" (click)="viewStudy(study.studyIuid)">
+            <fa-icon class="icon" [icon]="faEye"></fa-icon>
+              Ver
+            </button>
+          </th>
       </tr>
     </tbody>
   </table>

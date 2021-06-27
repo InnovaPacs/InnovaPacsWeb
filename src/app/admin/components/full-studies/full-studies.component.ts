@@ -11,6 +11,7 @@ import { NotificationService } from 'src/app/core/service/notification.service';
 import { StudyService } from 'src/app/core/service/study.service';
 import { Util } from 'src/app/core/util/util';
 import Swal from 'sweetalert2';
+import { faFilter, faPowerOff, faSearch, faTrashAlt, faTasks, faEye, faCogs, faShareAlt, faShare } from '@fortawesome/free-solid-svg-icons'; 
 
 @Component({
   selector: 'app-full-studies',
@@ -18,6 +19,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./full-studies.component.sass']
 })
 export class FullStudiesComponent implements OnInit {
+  public faFilter = faFilter;
+  public faPowerOff = faPowerOff;
+  public faSearch = faSearch;
+  public faTrash = faTrashAlt;
+  public faTasks = faTasks;
+  public faEye = faEye;
+  public faCogs = faCogs;
+  public faShareAlt = faShareAlt;
+  
   public showFilter: false;
   private studies: FullStudy[] = [];
   public studiesAux: FullStudy[] = [];

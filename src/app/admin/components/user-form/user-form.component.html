@@ -36,8 +36,10 @@
                     *ngIf="!user.id else elseBlock" >Crear</button>
                     
                     <ng-template #elseBlock>
-                        <button class="btn btn-primary" type="submit"
-                        >Editar</button>
+                        <button class="btn btn-primary" type="submit">
+                          <fa-icon class="icon" [icon]="faPenSquare"></fa-icon>
+                          Editar
+                        </button>
                     </ng-template>
                   </div>
               </div>

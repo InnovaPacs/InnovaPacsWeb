@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailConfiguration } from 'src/app/core/model/emailConfiguration';
 import { PatientService } from 'src/app/core/service/patient.service';
 import { Util } from 'src/app/core/util/util';
+import { faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-configure-email',
@@ -10,6 +11,9 @@ import { Util } from 'src/app/core/util/util';
   styleUrls: ['./configure-email.component.sass']
 })
 export class ConfigureEmailComponent implements OnInit {
+  public faSave = faSave;
+  public faTimes = faTimes;
+  
   @ViewChild('btnCloseModal', null)
   private btnCloseModal: ElementRef;
   @Output()
