@@ -50,22 +50,18 @@ export class Util {
   }
 
   handleError(error){
-    swal.close();
     swal.fire('Oops...', error.message, 'error');
   }
 
   errorMessage(message){
-    swal.close();
     swal.fire('Oops...', message, 'error');
   }
 
   successMessage(message){
-    swal.close();
     swal.fire('¡Operación exitosa!', message, 'success');
   }
 
   loading(){
-    swal.close();
     swal.showLoading();
   }
 

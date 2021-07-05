@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { compareAsc } from 'date-fns/fp';
 import { FullStudy } from 'src/app/core/model/fullStudy';
-import { StudyFilter } from 'src/app/core/model/fullStudy copy';
+import { StudyFilter } from 'src/app/core/model/StudyFilter';
 import { Institution } from 'src/app/core/model/institution';
 import { Modality } from 'src/app/core/model/modality';
 import { AttrsService } from 'src/app/core/service/attrs.service';
@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/core/service/notification.service';
 import { StudyService } from 'src/app/core/service/study.service';
 import { Util } from 'src/app/core/util/util';
 import Swal from 'sweetalert2';
-import { faFilter, faPowerOff, faSearch, faTrashAlt, faTasks, faEye, faCogs, faShareAlt, faShare } from '@fortawesome/free-solid-svg-icons'; 
+import { faFilter, faPowerOff, faSearch, faTrashAlt, faTasks, faEye, faCogs, faShareAlt, faShareSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'; 
 
 @Component({
   selector: 'app-full-studies',
@@ -27,7 +27,9 @@ export class FullStudiesComponent implements OnInit {
   public faEye = faEye;
   public faCogs = faCogs;
   public faShareAlt = faShareAlt;
-  
+  public faShareSquare = faShareSquare;
+  public faEnvelope = faEnvelope;
+
   public showFilter: false;
   private studies: FullStudy[] = [];
   public studiesAux: FullStudy[] = [];
@@ -36,6 +38,7 @@ export class FullStudiesComponent implements OnInit {
   public institutions: Institution[] = [];
   public modalities: Modality[] = [];
   public patientPk;
+  public uuid: string;
   
   constructor(private studyService: StudyService,
     private institutionService: InstitutionService,

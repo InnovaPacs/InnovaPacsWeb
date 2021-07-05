@@ -15,9 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InstitutionUserFormComponent } from './components/institution-user-form/institution-user-form.component';
 import { ConfigureEmailComponent } from './components/configure-email/configure-email.component';
 import { FontAwesomeModule }from '@fortawesome/angular-fontawesome';
+import { ShareStudyComponent } from './components/share-study/share-study.component';
 
 @NgModule({
-  declarations: [PatientComponent, StudyComponent, LayoutComponent, FooterComponent, NavComponent, MenuComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent],
+  declarations: [PatientComponent, StudyComponent, LayoutComponent, FooterComponent, NavComponent, MenuComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent, ShareStudyComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FullStudy } from '../model/fullStudy';
-import { StudyFilter } from '../model/fullStudy copy';
+import { StudyFilter } from '../model/StudyFilter';
 import { AuthService } from './auth.service';
 
 @Injectable({
