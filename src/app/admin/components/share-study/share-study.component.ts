@@ -14,13 +14,13 @@ export class ShareStudyComponent implements OnInit {
   public faShareSquare = faShareSquare;
   public faTimes = faTimes;
 
-  @ViewChild('btnCloseModal', null)
+  @ViewChild('btnCloseModal')
   private btnCloseModal: ElementRef;
   @Input() 
   private uuid: string;
   public aets: Aet[] = [];
-  private exportForm: FormGroup;
-  private submitted = false;
+  public exportForm: FormGroup;
+  public submitted = false;
 
   constructor(private dcm4cheeService: Dcm4cheeService,
     private formBuilder: FormBuilder, private util: Util) { }
@@ -53,4 +53,6 @@ export class ShareStudyComponent implements OnInit {
     this.btnCloseModal.nativeElement.click();
     this.util.successMessage('¡El estudio se exporto correctamente!');
   }
+
+  get f() { return this.exportForm.controls; }
 }

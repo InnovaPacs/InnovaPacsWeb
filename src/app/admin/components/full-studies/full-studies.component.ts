@@ -30,8 +30,8 @@ export class FullStudiesComponent implements OnInit {
   public faShareSquare = faShareSquare;
   public faEnvelope = faEnvelope;
 
-  public showFilter: false;
-  private studies: FullStudy[] = [];
+  public showFilter = false;
+  public studies: FullStudy[] = [];
   public studiesAux: FullStudy[] = [];
   public searchInput = new FormControl('');
   public filterForm: FormGroup;
@@ -54,7 +54,7 @@ export class FullStudiesComponent implements OnInit {
 
   }
 
-  private load() {
+  public load() {
     this.util.loading();
     this.studyService.findFullStudies().subscribe(response => {
       this.studies = response;

@@ -14,15 +14,15 @@ export class ConfigureEmailComponent implements OnInit {
   public faSave = faSave;
   public faTimes = faTimes;
   
-  @ViewChild('btnCloseModal', null)
-  private btnCloseModal: ElementRef;
+  @ViewChild('btnCloseModal')
+  public btnCloseModal: ElementRef;
   @Output()
-  private refreshEvent = new EventEmitter();
+  public refreshEvent = new EventEmitter();
 
   @Input() 
-  private patientPk: number;
-  private emailConfigurationForm: FormGroup;
-  private submitted = false;
+  public patientPk: number;
+  public emailConfigurationForm: FormGroup;
+  public submitted = false;
   
   constructor(private formBuilder: FormBuilder, private patientService: PatientService, private util: Util) { }
 
@@ -37,7 +37,7 @@ export class ConfigureEmailComponent implements OnInit {
     });
   }
 
-  private onSubmit(){
+  public onSubmit(){
     this.util.loading();
 
     this.submitted = true;

@@ -16,7 +16,7 @@ export class InstitutionUserFormComponent implements OnInit {
   public user = new User();
   public institutions: Institution[] = [];
   public institutionUser: InstitutionUser = new InstitutionUser();
-
+  public submitted = false;
   public title = 'Registrar usuario';
   public institutionUserForm: FormGroup;
   
