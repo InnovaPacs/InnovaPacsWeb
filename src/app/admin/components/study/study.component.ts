@@ -17,6 +17,10 @@ export class StudyComponent implements OnInit {
   public patient: Patient;
   public faEye = faEye;
   
+  public alertShow = false;
+  public alertMessage = 'No hay usuarios relacionados con la busqueda';
+  public alertType = 'warning';
+
   constructor(private activatedRoute: ActivatedRoute,
     private studyService: StudyService,
     private patientService: PatientService,
@@ -37,6 +41,7 @@ export class StudyComponent implements OnInit {
           this.patient = await this.patientService.findById(patientId).toPromise() as Patient;
           this.studies = await this.studyService.findByPatientId(patientId)
           .toPromise() as Study[]; 
+          this.alertShow = this.studies.length === 0;
           this.util.cancelLoading();
         } catch (error) {
           this.util.handleError(error);

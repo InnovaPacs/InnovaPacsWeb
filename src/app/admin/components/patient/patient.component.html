@@ -1,6 +1,13 @@
 <div class="mt-12">
   <h1>Pacientes</h1>
   <hr>
+  <div class="form-group">
+    <div class="form-group sm-12 mb-2">
+      <label for="search" class="sr-only">Buscar</label>
+      <input type="text" [formControl]="searchInput" class="form-control" id="search" placeholder="Buscar" 
+        (keyup)="search()">
+    </div>
+  </div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -12,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let patient of patients">
+      <tr *ngFor="let patient of patientsAux">
         <th>{{ patient.patId }}</th>
         <th>{{ patient.middleName }} {{ patient.familyName }} {{ patient.givenName }}</th>
         <th>{{ patient.gender }}</th>

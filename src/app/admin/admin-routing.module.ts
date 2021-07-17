@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FullStudiesComponent } from './components/full-studies/full-studies.component';
 import { InstitutionReportComponent } from './components/institution-report/institution-report.component';
 import { InstitutionUserFormComponent } from './components/institution-user-form/institution-user-form.component';
+import { InstitutionComponent } from './components/institution/institution.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { StudyComponent } from './components/study/study.component';
@@ -44,8 +45,12 @@ const routes: Routes = [
         component: InstitutionUserFormComponent,
       },
       {
-        path: 'institutionReport',
+        path: 'institutions/report',
         component: InstitutionReportComponent,
+      },
+      {
+        path: 'institutions',
+        component: InstitutionComponent
       }
     ]
   }

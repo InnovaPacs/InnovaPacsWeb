@@ -40,6 +40,10 @@ export class FullStudiesComponent implements OnInit {
   public patientPk;
   public uuid: string;
   
+  public alertShow = false;
+  public alertMessage = 'No hay estudios relacionados con la busqueda';
+  public alertType = 'warning';
+
   constructor(private studyService: StudyService,
     private institutionService: InstitutionService,
     private attrsService: AttrsService,
@@ -58,6 +62,7 @@ export class FullStudiesComponent implements OnInit {
     this.util.loading();
     this.studyService.findFullStudies().subscribe(response => {
       this.studies = response;
+      this.alertShow = this.studies.length === 0; 
       this.util.cancelLoading();
 
     }, (error) => this.util.handleError(error));
@@ -90,9 +95,8 @@ export class FullStudiesComponent implements OnInit {
 
   public async filter(){
     const filter = this.filterForm.value as StudyFilter;
-    
     this.studies = await this.studyService.findFullStudiesWithFilter(filter).toPromise();
-    
+    this.alertShow = this.studies.length === 0;
   }
 
   public validateDate(option: number){

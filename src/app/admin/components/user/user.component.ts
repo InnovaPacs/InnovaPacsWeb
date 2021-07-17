@@ -19,6 +19,10 @@ export class UserComponent implements OnInit {
   public faCogs = faCog;
   public faTasks = faTasks;
 
+  public alertShow = false;
+  public alertMessage = 'No hay usuarios relacionados con la busqueda';
+  public alertType = 'warning';
+
   constructor(private userService: UserService, private util: Util) { }
 
   ngOnInit() {
@@ -30,7 +34,7 @@ export class UserComponent implements OnInit {
       this.util.loading();
       this.users = await this.userService.findAll().toPromise() as User[];
       this.usersAux = [... this.users] ;
-
+      this.alertShow = this.usersAux.length === 0;
       this.util.cancelLoading();
     } catch (error) {
       this.util.handleError(error);
@@ -42,5 +46,6 @@ export class UserComponent implements OnInit {
   */
   public search(){
     this.usersAux = this.util.filterArrWithString(this.users, this.searchInput.value);
+    this.alertShow = this.usersAux.length === 0;
   }
 }

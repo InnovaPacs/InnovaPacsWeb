@@ -136,12 +136,10 @@
         </tr>
       </tbody>
     </table>
-    <div *ngIf="studies.length === 0" class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong>¡No hay estudios relacionados con la busqueda!</strong>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+    <app-alert [show]="alertShow" 
+      [message]="alertMessage"
+      [type]="alertType">
+    </app-alert>
   </div>
 </div>
 
