@@ -16,14 +16,17 @@ import { InstitutionUserFormComponent } from './components/institution-user-form
 import { ConfigureEmailComponent } from './components/configure-email/configure-email.component';
 import { FontAwesomeModule }from '@fortawesome/angular-fontawesome';
 import { ShareStudyComponent } from './components/share-study/share-study.component';
+import { InstitutionReportComponent } from './components/institution-report/institution-report.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
-  declarations: [PatientComponent, StudyComponent, LayoutComponent, FooterComponent, NavComponent, MenuComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent, ShareStudyComponent],
+  declarations: [PatientComponent, StudyComponent, LayoutComponent, FooterComponent, NavComponent, MenuComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent, ShareStudyComponent, InstitutionReportComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AdminRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxChartsModule
   ]
 })
 export class AdminModule { }

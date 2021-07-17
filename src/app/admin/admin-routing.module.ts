@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FullStudiesComponent } from './components/full-studies/full-studies.component';
+import { InstitutionReportComponent } from './components/institution-report/institution-report.component';
 import { InstitutionUserFormComponent } from './components/institution-user-form/institution-user-form.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { PatientComponent } from './components/patient/patient.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'institutionUser/form/:userId',
         component: InstitutionUserFormComponent,
+      },
+      {
+        path: 'institutionReport',
+        component: InstitutionReportComponent,
       }
     ]
   }
