@@ -1,0 +1,55 @@
+<div class="mt-12">
+    <div class="header">
+      <h1>Reportes</h1>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Reporte por modalidad</h5>
+            <ngx-charts-bar-vertical-2d
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="multi"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel"
+                [showDataLabel]="showDataLabel"
+                legendTitle=true
+                (select)="onSelect($event)">
+            </ngx-charts-bar-vertical-2d>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+ 
+        </div>
+        <!--
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Reporte modalidad</h5>
+                    <ngx-charts-bar-horizontal
+                        [view]="view"
+                        [scheme]="colorScheme"
+                        [results]="multi"
+                        [gradient]="gradient"
+                        [xAxis]="showXAxis"
+                        [yAxis]="showYAxis"
+                        [legend]="showLegend"
+                        [showXAxisLabel]="showXAxisLabel"
+                        [showYAxisLabel]="showYAxisLabel"
+                        [xAxisLabel]="xAxisLabel"
+                        [yAxisLabel]="yAxisLabel"
+                        (select)="onSelect($event)">
+                    </ngx-charts-bar-horizontal>
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
+</div>

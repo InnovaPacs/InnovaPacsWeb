@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/service/auth.service';
-import { faBook, faHospitalUser, faUsers, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faHospitalUser, faUsers, faPowerOff, faChartBar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-menu',
@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit {
   public faBook = faBook;
   public faUsers = faUsers;
   public faPowerOff = faPowerOff;
+  public faChartBar = faChartBar;
   
   constructor(private router: Router, private oauthService: AuthService) { }
 
