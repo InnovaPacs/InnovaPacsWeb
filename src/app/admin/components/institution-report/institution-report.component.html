@@ -2,54 +2,94 @@
     <div class="header">
       <h1>Reportes</h1>
     </div>
-
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Reporte general</h5>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id Institución</th>
+                        <th scope="col">Estudios</th>
+                        <th scope="col">Pacientes</th>
+                        <th scope="col">Imágenes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let institution of institutionReportDto">
+                            <th scope="row">{{ institution.institutionId }}</th>
+                            <th scope="row">{{ institution.numberStuty }}</th>
+                            <th scope="row">{{ institution.numberPatients }}</th>
+                            <th scope="row">{{ institution.numberInstances }}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                
+                <ngx-charts-bar-vertical
+                    [view]="view"
+                    [scheme]="colorScheme"
+                    [results]="institutionData"
+                    [gradient]="gradient"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [yAxisLabel]="yAxisLabel"
+                    [showDataLabel]="showDataLabel"
+                    legendTitle=true
+                    (select)="onSelect($event)">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+    </div>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Reporte por modalidad</h5>
-            <ngx-charts-bar-vertical-2d
-                [view]="view"
-                [scheme]="colorScheme"
-                [results]="multi"
-                [gradient]="gradient"
-                [xAxis]="showXAxis"
-                [yAxis]="showYAxis"
-                [legend]="showLegend"
-                [showXAxisLabel]="showXAxisLabel"
-                [showYAxisLabel]="showYAxisLabel"
-                [xAxisLabel]="xAxisLabel"
-                [yAxisLabel]="yAxisLabel"
-                [showDataLabel]="showDataLabel"
-                legendTitle=true
-                (select)="onSelect($event)">
-            </ngx-charts-bar-vertical-2d>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
- 
-        </div>
-        <!--
-        <div class="col-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Reporte modalidad</h5>
-                    <ngx-charts-bar-horizontal
-                        [view]="view"
-                        [scheme]="colorScheme"
-                        [results]="multi"
-                        [gradient]="gradient"
-                        [xAxis]="showXAxis"
-                        [yAxis]="showYAxis"
-                        [legend]="showLegend"
-                        [showXAxisLabel]="showXAxisLabel"
-                        [showYAxisLabel]="showYAxisLabel"
-                        [xAxisLabel]="xAxisLabel"
-                        [yAxisLabel]="yAxisLabel"
-                        (select)="onSelect($event)">
-                    </ngx-charts-bar-horizontal>
-                </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Modalidad</th>
+                        <th scope="col">Estudios</th>
+                        <th scope="col">Pacientes</th>
+                        <th scope="col">Imágenes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let modality of modalityReportDto">
+                            <th scope="row">{{ modality.modality }}</th>
+                            <th scope="row">{{ modality.numberStuty }}</th>
+                            <th scope="row">{{ modality.numberPatients }}</th>
+                            <th scope="row">{{ modality.numberInstances }}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <ngx-charts-bar-vertical-2d
+                    [view]="view"
+                    [scheme]="colorScheme"
+                    [results]="modalityData"
+                    [gradient]="gradient"
+                    [xAxis]="showXAxis"
+                    [yAxis]="showYAxis"
+                    [legend]="showLegend"
+                    [showXAxisLabel]="showXAxisLabel"
+                    [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="xAxisLabel"
+                    [yAxisLabel]="yAxisLabel"
+                    [showDataLabel]="showDataLabel"
+                    legendTitle=true
+                    (select)="onSelect($event)">
+                </ngx-charts-bar-vertical-2d>
             </div>
         </div>
-        -->
     </div>
 </div>

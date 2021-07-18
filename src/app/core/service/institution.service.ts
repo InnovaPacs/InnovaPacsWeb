@@ -18,4 +18,12 @@ export class InstitutionService {
   public configuration(institutionUser: InstitutionUser) {
     return this.http.post(`${this.API}api/v1/institutions/configuration`, institutionUser, {'headers': this.authService.getHeader()});
   }
+
+  public modalityReport(institutionId: number) {
+    return this.http.get(`${this.API}api/v1/studies/institutions/${institutionId}/modalityReport`, {'headers': this.authService.getHeader()});
+  }
+
+  public institutionReport(institutionId: number) {
+    return this.http.get(`${this.API}api/v1/studies/institutions/${institutionId}/report`, {'headers': this.authService.getHeader()});
+  }
 }

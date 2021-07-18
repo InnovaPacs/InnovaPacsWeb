@@ -45,7 +45,7 @@ const routes: Routes = [
         component: InstitutionUserFormComponent,
       },
       {
-        path: 'institutions/report',
+        path: 'institutions/:institutionId/report',
         component: InstitutionReportComponent,
       },
       {
