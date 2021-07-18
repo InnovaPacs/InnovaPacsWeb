@@ -7,8 +7,26 @@ import { AuthService } from "../service/auth.service";
   providedIn: 'root'
 })
 export class Util {
-
+  private modalities = {
+    "CR": "(CR) Placas simple",
+    "CT": "(CT) Tomografias",
+    "DX": "(DX) Rayos X",
+    "MG": "(MG) Mastografias",
+    "MR": "(MR) Resonancias",
+    "RF": "(RF) Fluroscopias",
+    "OT": "(OT) Densitometrias",
+    "US": "(US) Ultrasonidos"
+  }
   constructor(private router: Router, private authService: AuthService){
+  }
+
+  /**
+   * Get modality
+   * @param mmodality
+   * @returns 
+   */
+  public getModlity(modality: string): string{
+    return this.modalities[modality];
   }
 
   /**

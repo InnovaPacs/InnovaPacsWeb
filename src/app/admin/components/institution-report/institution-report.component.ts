@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalityReportDto } from 'src/app/core/model/globalReportDto';
+import { Institution } from 'src/app/core/model/institution';
 import { InstitutionReportDto } from 'src/app/core/model/institutionReportDto';
 import { InstitutionService } from 'src/app/core/service/institution.service';
 import { Util } from 'src/app/core/util/util';
@@ -14,6 +15,7 @@ import { Util } from 'src/app/core/util/util';
 export class InstitutionReportComponent implements OnInit {
   public modalityReportDto: ModalityReportDto[] = [];
   public institutionReportDto: InstitutionReportDto[] = [];
+  public institution: Institution;
   public lstModality: any[] = [];
   public modalityData: any = [];
   public institutionData: any = [];
@@ -55,10 +57,17 @@ export class InstitutionReportComponent implements OnInit {
       if (institutionId) {
         this.getModalityData(institutionId);
         this.getInstitutionData(institutionId);
+        this.getInstitution(institutionId);
       }
     });
   }
 
+  private getInstitution(institutionId: number){
+    this.institutionService.getById(institutionId).subscribe(response => {
+      this.institution = response as Institution;
+      this.util.cancelLoading();
+    }, (error) => this.util.handleError(error));
+  }
   /**
    * Get data of modalities by institutions
    */
@@ -91,7 +100,7 @@ export class InstitutionReportComponent implements OnInit {
     this.modalityReportDto.map( modality => {
       modalities.push(
         {
-          "name": modality.modality,
+          "name": this.util.getModlity(modality.modality),
           "series": [
             {
                 "name": "Estudios",

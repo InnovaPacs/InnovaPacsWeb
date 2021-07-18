@@ -26,4 +26,8 @@ export class InstitutionService {
   public institutionReport(institutionId: number) {
     return this.http.get(`${this.API}api/v1/studies/institutions/${institutionId}/report`, {'headers': this.authService.getHeader()});
   }
+
+  public getById(institutionId: number) {
+    return this.http.get(`${this.API}api/v1/institutions/${institutionId}`, {'headers': this.authService.getHeader()});
+  }
 }

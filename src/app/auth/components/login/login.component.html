@@ -1,10 +1,39 @@
+<div class="login row">
+    <div class="dark-side col-md-7 d-block d-sm-none d-md-block">
+        <h1 class="text-align-center">InnovaPacs</h1>
+    </div>
+
+    <div class="col-sm-12 col-md-5 login-form">
+        <div class= "login-container">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">¡Bienvenido!</h1>
+            </div>
+            <form [formGroup] = "userForm" (ngSubmit)="login()" class="user">
+                  <div class="form-group">
+                  <input type="text" formControlName="username" 
+                      placeholder="Username" [class.is-valid]="isValidField('username')"
+                      [class.is-invalid]="!isValidField('username')" 
+                      class="form-control form-control-user">
+                  <p class="messages" [class.active]="isValidField('username')">
+                  </div>
+                    <div class="form-group">
+                        <input type="password" formControlName="password" placeholder="Password"
+                            class="form-control form-control-user">
+                    </div>
+                    <button type="submit" class="btn btn-secondary btn-user btn-block">
+                        Ingresar
+                    </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--
 <div class="container">
-  <!-- Outer Row -->
   <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-6 col-md-6">
           <div class="card o-hidden border-0 shadow-lg my-5">
               <div class="card-body p-0">
-                  <!-- Nested Row within Card Body -->
                   <div class="row">
                       <div class="col-md-12">
                           <div class="p-5">
@@ -36,3 +65,4 @@
       </div>
   </div>
 </div>
+-->

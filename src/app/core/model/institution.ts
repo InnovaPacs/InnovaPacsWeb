@@ -1,5 +1,5 @@
 export class Institution {
-  id: number;
+  	id: number;
 	code: string;
 	name: string;
 }
