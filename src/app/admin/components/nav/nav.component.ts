@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
+import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav',
@@ -8,6 +8,8 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+  public faBars = faBars;
+  public faUser = faUser;
   @Output() handleMenuButton = new EventEmitter<FormGroup>();
   
   constructor() { }

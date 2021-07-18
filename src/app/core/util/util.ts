@@ -1,11 +1,16 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import swal from 'sweetalert2';
+import { AuthService } from "../service/auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class Util {
- 
+
+  constructor(private router: Router, private authService: AuthService){
+  }
+
   /**
    * Get badge according modality
    * @param modality
@@ -51,6 +56,10 @@ export class Util {
 
   handleError(error){
     swal.fire('Oops...', error.message, 'error');
+    if(error.status === 401){
+      this.authService.closeSession();
+      this.router.navigate(['/']);
+    }
   }
 
   errorMessage(message){
