@@ -1,4 +1,4 @@
-export interface InstitutionReportDto {
+export class InstitutionReportDto {
     institutionId: number;
 	numberStuty: number;
 	numberInstances: number;

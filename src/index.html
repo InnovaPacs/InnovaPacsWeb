@@ -1,13 +1,63 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>InnovaPacsDev</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>InnovaPacsDev</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <!-- Bootstrap Core CSS -->
+    <link href="./assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="./assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="./assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <!--c3 CSS -->
+    <link href="./assets/plugins/c3-master/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="./assets/css/pages/dashboard.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="./assets/css/colors/default-dark.css" id="theme" rel="stylesheet">
+  </head>
+  <body  class="fix-header fix-sidebar card-no-border mini-sidebar">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+      <div class="loader">
+          <div class="loader__figure"></div>
+          <p class="loader__label">Admin Pro</p>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+
+    <app-root></app-root>  
+  </body>
 </html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    console.log('DOM is ready.')
+    const navToggler = document.getElementById('innova-nav-toggler');
+    console.log('rfrfr ',navToggler);
+    
+  });
+  
+/*
+navToggler.addEventListener("click", function(){
+  console.log("Presesss");
+});*/
+
+    // this is for close icon when navigation open in mobile view
+    /*
+$(".nav-toggler").click(function() {
+  $("body").toggleClass("show-sidebar");
+  $(".nav-toggler i").toggleClass("ti-menu");
+  $(".nav-toggler i").addClass("ti-close");
+});
+*/
+</script>

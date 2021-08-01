@@ -62,6 +62,8 @@ export class FullStudiesComponent implements OnInit {
     this.util.loading();
     this.studyService.findFullStudies().subscribe(response => {
       this.studies = response;
+      console.log( this.studies);
+      
       this.alertShow = this.studies.length === 0; 
       this.util.cancelLoading();
 

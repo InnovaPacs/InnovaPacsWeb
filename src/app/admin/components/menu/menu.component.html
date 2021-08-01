@@ -1,3 +1,59 @@
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li> 
+                    <a class="waves-effect waves-dark" [routerLink]="['/admin/patients']" 
+                        routerLinkActive="active" aria-expanded="false">
+                        <i class="mdi mdi-account-multiple-plus"></i>
+                        <span class="hide-menu">Pacientes</span>
+                    </a>
+                </li>
+                <li> 
+                    <a class="waves-effect waves-dark" [routerLink]="['/admin/fullStudies']" routerLinkActive="active" 
+                        routerLinkActive="active" aria-expanded="false">
+                        <i class="mdi mdi-book"></i>
+                        <span class="hide-menu">Todos los estudios</span>
+                    </a>
+                </li>
+                <li> 
+                    <a class="waves-effect waves-dark" [routerLink]="['/admin/users']" routerLinkActive="active" 
+                        routerLinkActive="active" aria-expanded="false">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span class="hide-menu">Usuarios</span>
+                    </a>
+                </li>
+                <li> 
+                    <a class="waves-effect waves-dark"[routerLink]="['/admin/institutions']" routerLinkActive="active" 
+                        routerLinkActive="active" aria-expanded="false">
+                        <i class="mdi mdi-hospital-building"></i>
+                        <span class="hide-menu">Instituciones</span>
+                    </a>
+                </li>
+                <li> 
+                    <a class="waves-effect waves-dark" [routerLink]="['/login']" (click)="closeSession()" routerLinkActive="active"
+                        routerLinkActive="active" aria-expanded="false">
+                        <i class="mdi mdi-power"></i>
+                        <span class="hide-menu">Cerrar sesión</span>
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>
+<!-- ============================================================== -->
+<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+
+<!--
 <div id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
@@ -6,7 +62,7 @@
                     <a class="nav-link" [routerLink]="['/admin/patients']" routerLinkActive="active">
                         <div class="sb-nav-link-icon">
                         <div routerLinkActive="active-icon">
-                            <fa-icon class="icon" [icon]="faHospitalUser"></fa-icon>
+                           <fa-icon class="icon" [icon]="faHospitalUser"></fa-icon>
                         </div>
                         </div>Pacientes
                     </a>
@@ -52,3 +108,4 @@
         </div>
     </nav>
 </div>
+-->

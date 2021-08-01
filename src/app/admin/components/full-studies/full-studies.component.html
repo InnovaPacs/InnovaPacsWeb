@@ -6,15 +6,16 @@
       {{ showFilter ? 'Cerrar filtro' : 'Filtrar' }} 
     </button>
   </div>
+  <hr>
   <div class="collapse" id="collapseExample">
     <div class="card card-body">
       <form [formGroup] = "filterForm" (ngSubmit)="filter()">
-        <div class="form-row">
-          <div class="form-group col-md-4">
+        <div class="row">
+          <div class="col-3 mb-3">
             <label for="name">Nombre</label>
             <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nombre">
           </div>
-          <div class="form-group col-md-4">
+          <div class="col-3 mb-3">
             <label for="institution">Institución</label>
             <select class="form-control" formControlName="institution" name="institution" id="institution">
               <option [ngValue]="null" disabled>Selecciona Institución</option>
@@ -22,12 +23,12 @@
             </select>
           </div>
     
-          <div class="form-group col-md-4">
+          <div class="col-3 mb-3">
             <label for="patientId">Paciente Id</label>
             <input type="text" formControlName="patientId" class="form-control" id="patientId" placeholder="Paciente Id">
           </div>
     
-          <div class="form-group col-md-4">
+          <div class="col-3 mb-3">
             <label for="gender">Genero</label>
             <select class="form-control" formControlName="gender" name="gender" id="gender">
               <option value="null" disabled>Selecciona genero</option>
@@ -36,12 +37,12 @@
             </select>
           </div>
     
-          <div class="form-group col-md-4">
+          <div class="col-3 mb-3">
             <label for="studyDescription">Descripción de estudio</label>
             <input type="text" formControlName="studyDescription" class="form-control" id="studyDescription" placeholder="Descripción de estudio">
           </div>
     
-          <div class="form-group col-md-4">
+          <div class="col-3 mb-3">
             <label for="modality">Modalidad</label>
             <select class="form-control" formControlName="modality" name="modality" id="modality">
               <option [ngValue]="null" disabled>Selecciona modalidad</option>
@@ -49,22 +50,23 @@
             </select>
           </div>
     
-          <div class="form-group col-md-4">
+          <div class="col-3 mb-3">
             <label for="instances">No. de intancias</label>
             <input type="number" formControlName="instances" class="form-control" id="instances" placeholder="No. de intancias">
           </div>
     
-          <div class="form-group col-md-4">
+          <div class="col-3 mb-3">
             <label for="studyDateInit">Fecha de estudio inicio</label>
             <input type="date" (change) ="validateDate(0)" formControlName="studyDateInit" class="form-control" id="studyDateInit" placeholder="Fecha de estudio inicio">
           </div>
     
-          <div class="form-group col-md-4">
+          <div class="col-3 mb-3">
             <label for="studyDateEnd">Fecha de estudio fin</label>
             <input type="date" (change) ="validateDate(0)" formControlName="studyDateEnd" class="form-control" id="studyDateEnd" placeholder="Fecha de estudio fin">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary mr-2">
+        
+        <button type="submit" class="btn btn-primary">
           <fa-icon class="icon" [icon]="faSearch"></fa-icon>
           Buscar</button>
         <button type="button" (click)="initForm()" class="btn btn-secondary">
@@ -74,67 +76,67 @@
     </div>
   </div>
 
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Institución</th>
-          <th scope="col">Paciente Id</th>
-          <th scope="col">Nombre Paciente</th>
-          <th scope="col">Fecha de Nacimiento</th>
-          <th scope="col">Genero</th>
-          <th scope="col">Email</th>
-          <th scope="col">Fecha de Recepción</th>
-          <th scope="col">Fecha de Estudio</th>
-          <th scope="col">Descripción</th>
-          <th scope="col">Modalidad</th>
-          <th scope="col">Núm. Instancias</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody >
-        <tr *ngFor="let study of studies">
-          <th class="text-nowrap"> {{ study.institution }}</th>
-          <th>{{ study.patientId }}</th>
-          <th class="text-nowrap">{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</th>
-          <th class="text-nowrap">{{ study.birthDate | date:'shortDate'}}</th>
-          <th class="text-center">{{ study.patientSex }}</th>
-          <th class="text-center">{{ study.email }} {{study.studyUID}}</th>
-          <th class="text-nowrap">{{ study.createdTime | date:'shortDate' }}</th>
-          <th class="text-nowrap">{{ study.date | date:'shortDate' }}</th>
-          <th>{{ study.desc }}</th>
-          <th class="text-center"><span [class]="util.badge(study.modality)">{{ study.modality }}</span></th>
-          <th class="text-center"><span class="badge badge-dark">{{ study.numInstances }}</span></th>
-          <th>
-            <div class="dropdown">
-              <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <fa-icon class="icon" [icon]="faTasks"></fa-icon>
-                Acciones 
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <button class="dropdown-item" (click)="viewStudy(study.iuid)">
-                  <fa-icon class="icon" [icon]="faEye"></fa-icon>
-                  Ver
-                </button>
-                <button class="dropdown-item" (click)="patientPk = study.patientPk" data-toggle="modal" data-target="#configureEmailModal">
-                  <fa-icon class="icon" [icon]="faCogs"></fa-icon>
-                  Configurar email
-                </button>
-                <button *ngIf="study.email" (click)="sendNotification(study.iuid)" class="dropdown-item" >
-                  <fa-icon class="icon" [icon]="faEnvelope"></fa-icon>
-                  Enviar estudio a paciente
-                </button>
-
-                <button class="dropdown-item"  (click)="uuid = study.iuid" data-toggle="modal" data-target="#sharaStudyModal">
-                  <fa-icon class="icon" [icon]="faShareSquare"></fa-icon>
-                  Exportar
-                </button>
-
+  <div class="table-responsive mt-3">
+    <table class="table vm no-th-brd no-wrap pro-of-month">
+        <thead>
+            <tr>
+              <th>Institución</th>
+              <th>Paciente Id</th>
+              <th>Nombre Paciente</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Genero</th>
+              <th>Email</th>
+              <th>Fecha de Recepción</th>
+              <th>Fecha de Estudio</th>
+              <th>Descripción</th>
+              <th>Modalidad</th>
+              <th>Núm. Instancias</th>
+              <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let study of studies">
+            <td class="text-nowrap"> {{ study.institution }}</td>
+            <td>{{ study.patientId }}</td>
+            <td class="text-nowrap">{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</td>
+            <td class="text-nowrap">{{ study.birtdDate | date:'shortDate'}}</td>
+            <td class="text-center">{{ study.patientSex }}</td>
+            <td class="text-center">{{ study.email }} {{study.studyUID}}</td>
+            <td class="text-nowrap">{{ study.createdTime | date:'shortDate' }}</td>
+            <td class="text-nowrap">{{ study.date | date:'shortDate' }}</td>
+            <td>{{ study.desc }}</td>
+            <td class="text-center"><span [class]="util.badge(study.modality)">{{ study.modality }}</span></td>
+            <td class="text-center"><span class="label label-inverse">{{ study.numInstances }}</span></td>
+            <td>
+              <div class="dropdown">
+                <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <fa-icon class="icon" [icon]="faTasks"></fa-icon>
+                  Acciones 
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <button class="dropdown-item" (click)="viewStudy(study.iuid)">
+                    <fa-icon class="icon" [icon]="faEye"></fa-icon>
+                    Ver
+                  </button>
+                  <button class="dropdown-item" (click)="patientPk = study.patientPk" data-toggle="modal" data-target="#configureEmailModal">
+                    <fa-icon class="icon" [icon]="faCogs"></fa-icon>
+                    Configurar email
+                  </button>
+                  <button *ngIf="study.email" (click)="sendNotification(study.iuid)" class="dropdown-item" >
+                    <fa-icon class="icon" [icon]="faEnvelope"></fa-icon>
+                    Enviar estudio a paciente
+                  </button>
+  
+                  <button class="dropdown-item"  (click)="uuid = study.iuid" data-toggle="modal" data-target="#sharaStudyModal">
+                    <fa-icon class="icon" [icon]="faShareSquare"></fa-icon>
+                    Exportar
+                  </button>
+  
+                </div>
               </div>
-            </div>
-          </th>
-        </tr>
-      </tbody>
+            </td>
+          </tr>
+        </tbody>
     </table>
     <app-alert [show]="alertShow" 
       [message]="alertMessage"

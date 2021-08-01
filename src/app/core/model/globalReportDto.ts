@@ -1,4 +1,4 @@
-export interface ModalityReportDto {
+export class ModalityReportDto {
     modality: string;
 	numberStuty: number;
 	numberInstances: number;
