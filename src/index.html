@@ -35,29 +35,26 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
 
-    <app-root></app-root>  
+    <app-root></app-root>
+
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+
+    <script src="./assets/plugins/jquery/jquery.min.js"></script>
+    <script src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="./assets/js/waves.js"></script>
+    <script src="./assets/js/sidebarmenu.js"></script>
+    <script src="./assets/js/custom.min.js"></script>
+    <script src="./assets/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="./assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="./assets/plugins/d3/d3.min.js"></script>
+    <script src="./assets/plugins/c3-master/c3.min.js"></script>
+    <script>
+      $(window).ready(function(){
+        console.log("Jose Luis");
+      });
+    </script>
   </body>
 </html>
-
-<script>
-  document.addEventListener("DOMContentLoaded", (event) => {
-    console.log('DOM is ready.')
-    const navToggler = document.getElementById('innova-nav-toggler');
-    console.log('rfrfr ',navToggler);
-    
-  });
-  
-/*
-navToggler.addEventListener("click", function(){
-  console.log("Presesss");
-});*/
-
-    // this is for close icon when navigation open in mobile view
-    /*
-$(".nav-toggler").click(function() {
-  $("body").toggleClass("show-sidebar");
-  $(".nav-toggler i").toggleClass("ti-menu");
-  $(".nav-toggler i").addClass("ti-close");
-});
-*/
-</script>

@@ -1,97 +1,100 @@
-<div class="mt-12">
-    <div class="header" *ngIf="institution">
-      <h1>{{ institution.name }}</h1>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h1>{{ institution.name }}</h1>          
+            </div>
+        </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Stats box -->
-    <!-- ============================================================== -->
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex no-block">
-                        <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span><img src="./assets/images/icon/staff.png" alt="Income" /></div>
-                        <div class="align-self-center">
-                            <h6 class="text-muted m-t-10 m-b-0">Total Pacientes</h6>
-                            <h2 class="m-t-0">{{ institutionCardDto.numberPatients }}</h2></div>
-                    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span><img src="./assets/images/icon/staff.png" alt="Income" /></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">Total Pacientes</h6>
+                        <h2 class="m-t-0">{{ institutionCardDto.numberPatients }}</h2></div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex no-block">
-                        <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span><img src="../assets/images/icon/income.png" alt="Income" /></div>
-                        <div class="align-self-center">
-                            <h6 class="text-muted m-t-10 m-b-0">Total Estudios</h6>
-                            <h2 class="m-t-0">{{ institutionCardDto.numberStuty }}</h2></div>
-                    </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span><img src="../assets/images/icon/income.png" alt="Income" /></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">Total Estudios</h6>
+                        <h2 class="m-t-0">{{ institutionCardDto.numberStuty }}</h2></div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex no-block">
-                        <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span><img src="../assets/images/icon/expense.png" alt="Income" /></div>
-                        <div class="align-self-center">
-                            <h6 class="text-muted m-t-10 m-b-0">Total Imágenes</h6>
-                            <h2 class="m-t-0">{{ institutionCardDto.numberInstances }}</h2></div>
-                    </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><span class="lstick m-r-20"></span><img src="../assets/images/icon/expense.png" alt="Income" /></div>
+                    <div class="align-self-center">
+                        <h6 class="text-muted m-t-10 m-b-0">Total Imágenes</h6>
+                        <h2 class="m-t-0">{{ institutionCardDto.numberInstances }}</h2></div>
                 </div>
             </div>
         </div>
+    </div>  
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Reporte por modalidad</h3>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Modalidad</th>
+                                <th scope="col">Estudios</th>
+                                <th scope="col">Pacientes</th>
+                                <th scope="col">Imágenes</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let modality of modalityReportDto">
+                                    <th scope="row">{{ this.util.getModlity(modality.modality)}}</th>
+                                    <th scope="row">{{ modality.numberStuty }}</th>
+                                    <th scope="row">{{ modality.numberPatients }}</th>
+                                    <th scope="row">{{ modality.numberInstances }}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
         
-    </div>
-    
-    <hr>
-
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Reporte por modalidad</h5>
+                    <hr>
+                    
+                    <div class="col-xs-12">
+                        <ngx-charts-bar-vertical-2d
+                            [view]="view"
+                            [scheme]="colorScheme"
+                            [results]="modalityData"
+                            [gradient]="gradient"
+                            [xAxis]="showXAxis"
+                            [yAxis]="showYAxis"
+                            [legend]="showLegend"
+                            [showXAxisLabel]="showXAxisLabel"
+                            [showYAxisLabel]="showYAxisLabel"
+                            [xAxisLabel]="xAxisLabel"
+                            [yAxisLabel]="yAxisLabel"
+                            [showDataLabel]="showDataLabel"
+                            legendTitle=true
+                            (select)="onSelect($event)">
+                        </ngx-charts-bar-vertical-2d>
+                    </div>
+                </div>  
+            </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Modalidad</th>
-                        <th scope="col">Estudios</th>
-                        <th scope="col">Pacientes</th>
-                        <th scope="col">Imágenes</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let modality of modalityReportDto">
-                            <th scope="row">{{ this.util.getModlity(modality.modality)}}</th>
-                            <th scope="row">{{ modality.numberStuty }}</th>
-                            <th scope="row">{{ modality.numberPatients }}</th>
-                            <th scope="row">{{ modality.numberInstances }}</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <hr>
-            
-            <div class="col-xs-12">
-                <ngx-charts-bar-vertical-2d
-                    [view]="view"
-                    [scheme]="colorScheme"
-                    [results]="modalityData"
-                    [gradient]="gradient"
-                    [xAxis]="showXAxis"
-                    [yAxis]="showYAxis"
-                    [legend]="showLegend"
-                    [showXAxisLabel]="showXAxisLabel"
-                    [showYAxisLabel]="showYAxisLabel"
-                    [xAxisLabel]="xAxisLabel"
-                    [yAxisLabel]="yAxisLabel"
-                    [showDataLabel]="showDataLabel"
-                    legendTitle=true
-                    (select)="onSelect($event)">
-                </ngx-charts-bar-vertical-2d>
-            </div>
-        </div>  
+    </div>
 </div>

@@ -6,10 +6,13 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutComponent } from './layout/layout.component';
+import { ShareModule } from './share/share.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, LayoutComponent, NotFoundComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -17,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoreModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule, 
+    ShareModule
   ],
   bootstrap: [AppComponent]
 })

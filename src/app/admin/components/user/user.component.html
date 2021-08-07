@@ -1,60 +1,69 @@
-<div class="mt-12">
-  <h1 class="title-demo">Usuarios</h1>
-  <button class="btn btn-success" [routerLink]="['/admin/users/form']">
-    <fa-icon class="icon" [icon]="faUserPlus"></fa-icon>
-    Nuevo Usuario
-  </button>
-  <hr>
-  <div class="form-group">
-    <div class="form-group sm-12 mb-2">
-      <label for="search" class="sr-only">Buscar</label>
-      <input type="text" [formControl]="searchInput" class="form-control" id="search" placeholder="Buscar" 
-        (keyup)="search()">
-    </div>
-  </div>
-  <div class="table-responsive mt-3">
-    <table class="table vm no-th-brd no-wrap pro-of-month">
-        <thead>
-            <tr>
-              <th>Id</th>
-              <th>Email</th>
-              <th>Nombre de usuarios</th>
-              <th>Estatus</th>
-              <th>Instituciones</th>
-              <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of usersAux">
-            <td>{{ user.id }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.username }}</td>
-            <td [ngClass]="{'text-success': user.active, 'text-danger': !user.active }">{{ user.active ? 'Activo':'Inactivo'}}</td>
-            <td>{{ user.institutions}}</td>
-            <td>
-              <div class="dropdown">
-                <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <fa-icon class="icon" [icon]="faTasks"></fa-icon>
-                  Acciones
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <button class="dropdown-item" [routerLink]="['/admin/users/form/', user.id]">
-                    <fa-icon class="icon" [icon]="faPenSquare"></fa-icon>
-                    Editar
-                  </button>
-                  <button class="dropdown-item" [routerLink]="['/admin/institutionUser/form/', user.id]">
-                    <fa-icon class="icon" [icon]="faCogs"></fa-icon>
-                    Configuración
-                  </button>
-                </div>
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+            <div class="header">
+              <h1 class="title-demo">Usuarios</h1>
+              <button class="btn btn-success" [routerLink]="['/admin/users/form']">
+                <fa-icon class="icon" [icon]="faUserPlus"></fa-icon>
+                Nuevo Usuario
+              </button>
+            </div>
+            <hr>
+            <div class="form-group">
+              <div class="form-group sm-12 mb-2">
+                <label for="search" class="sr-only">Buscar</label>
+                <input type="text" [formControl]="searchInput" class="form-control" id="search" placeholder="Buscar" 
+                  (keyup)="search()">
               </div>
-            </td>
-          </tr>
-        </tbody>
-    </table>
-    <app-alert [show]="alertShow" 
-      [message]="alertMessage"
-      [type]="alertType">
-    </app-alert>
+            </div>
+            <div class="table-responsive mt-3">
+              <table class="table vm no-th-brd no-wrap pro-of-month">
+                  <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Email</th>
+                        <th>Nombre de usuarios</th>
+                        <th>Estatus</th>
+                        <th>Instituciones</th>
+                        <th>Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of usersAux">
+                      <td>{{ user.id }}</td>
+                      <td>{{ user.email }}</td>
+                      <td>{{ user.username }}</td>
+                      <td [ngClass]="{'text-success': user.active, 'text-danger': !user.active }">{{ user.active ? 'Activo':'Inactivo'}}</td>
+                      <td>{{ user.institutions}}</td>
+                      <td>
+                        <div class="dropdown">
+                          <a class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <fa-icon class="icon" [icon]="faTasks"></fa-icon>
+                            Acciones
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <button class="dropdown-item" [routerLink]="['/admin/users/form/', user.id]">
+                              <fa-icon class="icon" [icon]="faPenSquare"></fa-icon>
+                              Editar
+                            </button>
+                            <button class="dropdown-item" [routerLink]="['/admin/institutionUser/form/', user.id]">
+                              <fa-icon class="icon" [icon]="faCogs"></fa-icon>
+                              Configuración
+                            </button>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+              </table>
+              <app-alert [show]="alertShow" 
+                [message]="alertMessage"
+                [type]="alertType">
+              </app-alert>
+            </div>
+          </div>
+      </div>
   </div>
+</div>
 
