@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API: 'http://192.168.3.116:8081/innova-pacs/',
-  DCM4CHEE_API: 'https://192.168.3.116:8443/dcm4chee-arc/',
+  API: 'http://192.168.3.101:8081/innova-pacs/',
+  DCM4CHEE_API: 'https://192.168.3.101:8443/dcm4chee-arc/',
   CLIENT_ID: 'InnovaPacs',
   CLIENT_SECRET: 'InnovaPacs2021',
   GRANT_TYPE: 'password'

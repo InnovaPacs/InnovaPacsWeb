@@ -1,0 +1,12 @@
+.icon {
+    background-color: #3B3A3D;
+    border-radius: 5px;
+    padding: 3px 7px;
+    display: flex;
+}
+
+.active-icon .icon {
+    background-color: #FFFFFF;
+    color: #3B3A3D;
+}
+    

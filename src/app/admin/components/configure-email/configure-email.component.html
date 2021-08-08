@@ -3,9 +3,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="configureEmailModalLabel">Configurar email</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn btn-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
         </button>
+        
       </div>
       <div class="modal-body">
         <form [formGroup] = "emailConfigurationForm" class="row" (ngSubmit)="onSubmit()">

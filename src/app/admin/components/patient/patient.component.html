@@ -1,55 +1,65 @@
-<div class="mt-12">
-  <h1>Pacientes</h1>
-  <hr>
-  <div class="form-group">
-    <div class="form-group sm-12 mb-2">
-      <label for="search" class="sr-only">Buscar</label>
-      <input type="text" [formControl]="searchInput" class="form-control" id="search" placeholder="Buscar" 
-        (keyup)="search()">
-    </div>
-  </div>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Genero</th>
-        <th scope="col">Email</th>
-        <th scope="col">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let patient of patientsAux">
-        <th>{{ patient.patId }}</th>
-        <th>{{ patient.middleName }} {{ patient.familyName }} {{ patient.givenName }}</th>
-        <th>{{ patient.gender }}</th>
-        <th>{{ patient.email }}</th>
-        <th>
-          <div class="dropdown">
-            <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <fa-icon class="icon" [icon]="faTasks"></fa-icon>
-              Acciones
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <button class="dropdown-item" [routerLink]="['/admin/studies', patient.pk]">
-                <fa-icon class="icon" [icon]="faBook"></fa-icon>
-                  Estudios
-                </button>
-              <button class="dropdown-item" (click)="patientPk = patient.pk" data-toggle="modal" data-target="#configureEmailModal">
-                <fa-icon class="icon" [icon]="faCogs"></fa-icon>
-                  Configurar email
-                </button>
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+            <h1>Pacientes</h1>
+            
+            <hr>
+            
+            <div class="form-group">
+              <div class="form-group sm-12 mb-2">
+                <label for="search" class="sr-only">Buscar</label>
+                <input type="text" [formControl]="searchInput" class="form-control" id="search" placeholder="Buscar" 
+                  (keyup)="search()">
+              </div>
             </div>
+
+            <hr>
+
+            <div class="table-responsive mt-3">
+              <table class="table vm no-th-brd no-wrap pro-of-month">
+                  <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Genero</th>
+                        <th>Email</th>
+                        <th>Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let patient of patientsAux">
+                      <td>{{ patient.patId }}</td>
+                      <td>{{ patient.middleName }} {{ patient.familyName }} {{ patient.givenName }}</td>
+                      <td>{{ patient.gender }}</td>
+                      <td>{{ patient.email }}</td>
+                      <td>
+                        <div class="dropdown">
+                          <a class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <fa-icon class="icon" [icon]="faTasks"></fa-icon>
+                            Acciones
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <button class="dropdown-item" [routerLink]="['/admin/studies', patient.pk]">
+                              <fa-icon class="icon" [icon]="faBook"></fa-icon>
+                                Estudios
+                              </button>
+                            <button class="dropdown-item" (click)="patientPk = patient.pk" data-toggle="modal" data-target="#configureEmailModal">
+                              <fa-icon class="icon" [icon]="faCogs"></fa-icon>
+                                Configurar email
+                              </button>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+              </table>
+            </div>
+            <app-alert [show]="alertShow" 
+              [message]="alertMessage"
+              [type]="alertType">
+            </app-alert>
           </div>
-        </th>
-      </tr>
-    </tbody>
-  </table>
-  <div *ngIf="patients.length === 0" class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>¡No hay pacientes relacionados con la busqueda!</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+      </div>
   </div>
 </div>
 <!--Email configuration modal-->

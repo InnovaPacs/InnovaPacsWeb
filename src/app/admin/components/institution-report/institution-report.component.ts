@@ -13,6 +13,7 @@ import { Util } from 'src/app/core/util/util';
   styleUrls: ['./institution-report.component.sass']
 })
 export class InstitutionReportComponent implements OnInit {
+  public institutionCardDto: InstitutionReportDto = new InstitutionReportDto();
   public modalityReportDto: ModalityReportDto[] = [];
   public institutionReportDto: InstitutionReportDto[] = [];
   public institution: Institution;
@@ -128,7 +129,18 @@ export class InstitutionReportComponent implements OnInit {
   private configureInstitutionReport(modalityReportDto: InstitutionReportDto[]){
     this.institutionReportDto = modalityReportDto; 
     const institutions: any = [];
+    this.institutionCardDto.numberInstances = 0;
+    this.institutionCardDto.numberStuty = 0;
+    this.institutionCardDto.numberPatients = 0;
+
     this.institutionReportDto.map( institution => {
+      this.institutionCardDto.numberInstances = this.institutionCardDto.numberInstances + institution.numberInstances;
+      this.institutionCardDto.numberStuty = this.institutionCardDto.numberStuty + institution.numberStuty;
+      this.institutionCardDto.numberPatients = this.institutionCardDto.numberPatients + institution.numberPatients;
+
+      console.log(this.institutionCardDto.numberPatients);
+      console.log(institution.numberPatients);
+      
       institutions.push(
         {
           "name": "Estudios",

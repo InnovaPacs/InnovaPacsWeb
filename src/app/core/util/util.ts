@@ -35,17 +35,17 @@ export class Util {
    */
   public badge(modality: string): string{
     if(modality === 'CR'){
-      return 'badge badge-success';
+      return 'badge bg-success';
     }else if(modality === 'CT'){
-      return 'badge badge-warning';
+      return 'badge bg-warning';
     }else if(modality === 'US'){
-      return 'badge badge-secondary';
+      return 'badge bg-light text-dark';
     }else if(modality === 'MR'){
-      return 'badge badge-info';
+      return 'badge bg-secondary';
     }else if(modality === 'DX'){
-      return 'badge badge-dark';
+      return 'badge bg-dark';
     }else if (modality === 'XA'){
-      return 'badge badge-primary'
+      return 'badge bg-primary'
     }
   }
 
