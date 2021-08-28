@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         this.authService.handleSession(response);
         this.router.navigate(['/admin/patients']);
 
-      });
+      }, this.handleError);
 
     } else {
       this.userForm.markAllAsTouched();
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(error): void {
-    swal.fire('Oops...', 'Something went wrong with your account!', 'error');
+    swal.fire('¡Oops!', '¡Ocurrio un error, intente más tarde por favor!', 'error');
   }
 
   isValidField(field: string): boolean {
