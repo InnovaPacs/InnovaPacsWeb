@@ -49,7 +49,7 @@ export class InstitutionReportComponent implements OnInit {
   }
 
   onSelect(event) {
-    console.log(event);
+
   }
 
   public load() {
@@ -137,9 +137,6 @@ export class InstitutionReportComponent implements OnInit {
       this.institutionCardDto.numberInstances = this.institutionCardDto.numberInstances + institution.numberInstances;
       this.institutionCardDto.numberStuty = this.institutionCardDto.numberStuty + institution.numberStuty;
       this.institutionCardDto.numberPatients = this.institutionCardDto.numberPatients + institution.numberPatients;
-
-      console.log(this.institutionCardDto.numberPatients);
-      console.log(institution.numberPatients);
       
       institutions.push(
         {

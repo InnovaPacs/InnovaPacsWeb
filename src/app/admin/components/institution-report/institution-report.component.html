@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h1>{{ institution.name }}</h1>          
+                <h1 *ngIf="institution">{{ institution.name }}</h1>          
             </div>
         </div>
     </div>

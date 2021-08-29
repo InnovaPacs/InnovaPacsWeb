@@ -41,7 +41,7 @@ export class FullStudiesComponent implements OnInit {
   public uuid: string;
   
   public alertShow = false;
-  public alertMessage = 'No hay estudios relacionados con la busqueda';
+  public alertMessage = 'No hay estudios relacionados con la busqueda o bien su usuario no tiene relacionado una institución.';
   public alertType = 'warning';
 
   constructor(private studyService: StudyService,
