@@ -9,10 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutComponent } from './layout/layout.component';
 import { ShareModule } from './share/share.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ReportComponent } from './report/report.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
-    AppComponent, LayoutComponent, NotFoundComponent
+    AppComponent, LayoutComponent, NotFoundComponent, ReportComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -21,7 +23,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule, 
-    ShareModule
+    ShareModule,
+    NgxChartsModule,
   ],
   bootstrap: [AppComponent]
 })

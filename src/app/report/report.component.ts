@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { ModalityReportDto } from 'src/app/core/model/globalReportDto';
-import { Institution } from 'src/app/core/model/institution';
-import { InstitutionReportDto } from 'src/app/core/model/institutionReportDto';
-import { InstitutionService } from 'src/app/core/service/institution.service';
-import { Util } from 'src/app/core/util/util';
-import { environment } from 'src/environments/environment';
-//import { multi } from './data';
+import { ModalityReportDto } from '../core/model/globalReportDto';
+import { Institution } from '../core/model/institution';
+import { InstitutionReportDto } from '../core/model/institutionReportDto';
+import { InstitutionService } from '../core/service/institution.service';
+import { Util } from '../core/util/util';
 
 @Component({
-  selector: 'app-institution-report',
-  templateUrl: './institution-report.component.html',
-  styleUrls: ['./institution-report.component.sass']
+  selector: 'app-report',
+  templateUrl: './report.component.html',
+  styleUrls: ['./report.component.sass']
 })
-export class InstitutionReportComponent implements OnInit {
+export class ReportComponent implements OnInit {
   public linkPDF: any;
   public institutionCardDto: InstitutionReportDto = new InstitutionReportDto();
   public modalityReportDto: ModalityReportDto[] = [];
@@ -36,6 +34,7 @@ export class InstitutionReportComponent implements OnInit {
   showYAxisLabel = true;
   yAxisLabel = 'Cantidad';
   showDataLabel = true;
+  
 
   colorScheme = {
     domain: ['#0000FF', '#FF0066', '#9900FF', '#AAAAAA']

@@ -52,7 +52,7 @@ export class StudyComponent implements OnInit {
 
   public viewStudy(studyIuid: string){
     if(studyIuid){
-      window.open(`http://localhost:81/viewer.html?studyUID=${studyIuid}`, '_blank');
+      window.open(`http://192.168.3.116:8080/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`, '_blank');
     }
   }
 }

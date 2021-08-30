@@ -28,19 +28,19 @@ export class AuthService {
 
   handleSession(response): void {
     if (response['access_token']) {
-      sessionStorage.setItem('access_token', response['access_token']);
+      localStorage.setItem('access_token', response['access_token']);
     }
   }
 
   getToken(): string {
-    return sessionStorage.getItem('access_token');
+    return localStorage.getItem('access_token');
   }
 
   /**
    * Clear session storage
    */
   closeSession(): void {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
   /**

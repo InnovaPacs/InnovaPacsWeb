@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { InstitutionUser } from '../model/institutionUser';
 import { AuthService } from './auth.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,17 @@ export class InstitutionService {
 
   public getById(institutionId: number) {
     return this.http.get(`${this.API}api/v1/institutions/${institutionId}`, {'headers': this.authService.getHeader()});
+  }
+
+  public generateReport(intitutionId: number) {
+    return this.http.get(`${this.API}api/v1/institutions/report/${intitutionId}`, 
+    {
+      'headers': this.authService.getHeader(),
+      responseType: 'blob'
+    }).pipe(
+      map((result: any) => {
+        return result;
+      }),
+    );
   }
 }
