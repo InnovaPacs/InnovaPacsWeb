@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package*.json /app/
 RUN npm install
 COPY ./ /app/
-ARG configuration=production
+ARG configuration=prod
 RUN npm run build -- --output-path=./dist/out --configuration $configuration
 
 FROM nginx:1.15
