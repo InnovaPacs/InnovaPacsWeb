@@ -6,6 +6,7 @@ import { PatientService } from 'src/app/core/service/patient.service';
 import { StudyService } from 'src/app/core/service/study.service';
 import { Util } from 'src/app/core/util/util';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-study',
@@ -13,6 +14,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./study.component.sass']
 })
 export class StudyComponent implements OnInit {
+  public host = environment.HOST;
   public studies: Study[] = [];
   public patient: Patient;
   public faEye = faEye;
@@ -52,7 +54,7 @@ export class StudyComponent implements OnInit {
 
   public viewStudy(studyIuid: string){
     if(studyIuid){
-      window.open(`http://192.168.3.116:8080/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`, '_blank');
+      window.open(`http://${this.host}:8080/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`, '_blank');
     }
   }
 }

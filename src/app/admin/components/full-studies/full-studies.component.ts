@@ -12,6 +12,7 @@ import { StudyService } from 'src/app/core/service/study.service';
 import { Util } from 'src/app/core/util/util';
 import Swal from 'sweetalert2';
 import { faFilter, faPowerOff, faSearch, faTrashAlt, faTasks, faEye, faCogs, faShareAlt, faShareSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'; 
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-full-studies',
@@ -19,6 +20,7 @@ import { faFilter, faPowerOff, faSearch, faTrashAlt, faTasks, faEye, faCogs, faS
   styleUrls: ['./full-studies.component.sass']
 })
 export class FullStudiesComponent implements OnInit {
+  public host = environment.HOST;
   public faFilter = faFilter;
   public faPowerOff = faPowerOff;
   public faSearch = faSearch;
@@ -77,7 +79,7 @@ export class FullStudiesComponent implements OnInit {
 
   public viewStudy(studyIuid: string){
     if(studyIuid){
-      window.open(`http://192.168.3.116:8080/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`, '_blank');
+      window.open(`http://${this.host}:8080/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`, '_blank');
     }
   }
 
