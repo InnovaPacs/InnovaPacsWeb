@@ -69,7 +69,7 @@ export class UserFormComponent implements OnInit {
     this.util.loading();
     
     try {
-      if (this.user.id !== null) {
+      if (this.user.id) {
         const response = await this.userService.update(this.user, this.user.id).toPromise();
         this.util.successMessage('El usuario se creo correctamente');
       } else {
