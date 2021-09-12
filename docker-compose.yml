@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  postventa-db:
+    image: postgres
+    env_file: 
+      - database.env
+      
+    volumes:
+      - postventa-data:/var/lib/postgresql/data
+    ports: 
+      - "5432:5432"
+  postventa-api:
+    build: .
+    depends_on: 
+      - postventa-db
+    ports: 
+      - "3000:3000"
+volumes: 
+  postventa-data:
+    driver: local
+
+
+
+ #docker run -d -p 5432:5432 --network=postventa-network --name postventa-db -e POSTGRES_USER=postventa -e POSTGRES_PASSWORD=postventa --mount src=db-postventa,dst=/var/lib/postgresql/data postgres\   
