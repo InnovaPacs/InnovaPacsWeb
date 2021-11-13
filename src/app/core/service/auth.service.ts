@@ -32,6 +32,12 @@ export class AuthService {
     }
   }
 
+  validateSession(response): void {
+    if (response['access_token']) {
+      localStorage.setItem('access_token', response['access_token']);
+    }
+  }
+
   getToken(): string {
     return localStorage.getItem('access_token');
   }
