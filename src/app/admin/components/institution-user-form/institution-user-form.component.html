@@ -1,7 +1,14 @@
 <div>
     <div class="card mt-4">
         <div class="card-body">
-            <h5 class="card-title pb-3">{{ title }}</h5>
+            <div class="header">
+                <h1>{{ title }}</h1>
+                <button (click)= "saveConfiguration()" class="btn btn-primary btn-small" role="button">
+                    Guardar
+                </button>
+            </div>
+              <hr>
+<!--
             <form [formGroup] = "institutionUserForm" class="row" (ngSubmit)="onSubmit()">
                 
                 <label class="col-form-label col-md-2" for="userId" >Usuario:</label>
@@ -31,6 +38,30 @@
                     </div>
                 </div>
             </form>
+        -->
+            <table class="table vm no-th-brd pro-of-month">
+                <thead>
+                    <tr>
+                        <th>Intitución</th>
+                        <th>Estatus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let institution of institutions">
+                        <td>
+                            <h6>{{ institution.name }}</h6>
+                        </td>
+                        <td>
+                            <input class="form-check-input" type="checkbox"
+                            [checked]="institution.active"
+                            (change)="onChange($event.target.checked, institution.id)"
+                            id="{{institution.id}}">
+                            <label class="form-check-label" for="{{institution.id}}"></label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+

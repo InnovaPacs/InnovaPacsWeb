@@ -43,4 +43,27 @@ export class InstitutionService {
       }),
     );
   }
+
+  /**
+   * Fing configuration by id
+   * @param userId 
+   * @returns 
+   */
+  public findConfigurationByUserId(userId: number) {
+    return this.http.get(`${this.API}api/v1/institutions/user/${userId}/configuration`,
+    {'headers': this.authService.getHeader()});
+  }
+
+  /**
+   * Save configuration by id
+   * @param userId 
+   * @param ids 
+   * @returns 
+   */
+  public saveConfigurationByUserId(userId: number, ids: number[] ) {
+    console.log('saveConfigurationByUserId');
+    
+    return this.http.post(`${this.API}api/v1/institutions/user/${userId}`,
+    ids, {'headers': this.authService.getHeader()});
+  }
 }

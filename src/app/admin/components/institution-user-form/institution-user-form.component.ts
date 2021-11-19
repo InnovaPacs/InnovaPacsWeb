@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Institution } from 'src/app/core/model/institution';
+import { InstitutionConfiguration } from 'src/app/core/model/InstitutionConfigurationDto';
 import { InstitutionUser } from 'src/app/core/model/institutionUser';
 import { User } from 'src/app/core/model/user';
 import { InstitutionService } from 'src/app/core/service/institution.service';
 import { UserService } from 'src/app/core/service/user.service';
+import { Util } from 'src/app/core/util/util';
 
 @Component({
   selector: 'app-institution-user-form',
@@ -14,17 +16,19 @@ import { UserService } from 'src/app/core/service/user.service';
 })
 export class InstitutionUserFormComponent implements OnInit {
   public user = new User();
-  public institutions: Institution[] = [];
+  public institutions: InstitutionConfiguration[] = [];
   public institutionUser: InstitutionUser = new InstitutionUser();
   public submitted = false;
   public title = 'Registrar usuario';
   public institutionUserForm: FormGroup;
+  public userId: number;
   
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private formBuilder: FormBuilder,
               private userService: UserService,
-              private institutionService: InstitutionService) { }
+              private institutionService: InstitutionService,
+              private util: Util) { }
 
   ngOnInit() {
     this.load();
@@ -36,11 +40,12 @@ export class InstitutionUserFormComponent implements OnInit {
    * Load data
    */
   async load() {
+
     this.activatedRoute.params.subscribe( async params => {
-      const id = params.userId;
+      this.userId = params.userId;
         
-      if (id) {
-        this.user = await this.userService.findById(id).toPromise() as User;
+      if (this.userId) {
+        this.user = await this.userService.findById(this.userId).toPromise() as User;
         this.institutionUserForm.patchValue({userId: this.user.id});
       }
     });
@@ -51,14 +56,28 @@ export class InstitutionUserFormComponent implements OnInit {
    */
   async loadList(){
 
-    this.institutions = await this.institutionService.findAll().toPromise() as Institution[];
+    try {
+      this.util.loading();
 
+      this.institutions = await this.institutionService.findConfigurationByUserId(this.userId)
+      .toPromise() as InstitutionConfiguration[];
+
+      this.util.cancelLoading();
+    } catch (error) {
+      this.util.handleError(error);
+    }
   }
 
   public async onSubmit(){
-    this.institutionUser = this.institutionUserForm.value as InstitutionUser;
-    await this.institutionService.configuration(this.institutionUser).toPromise();
-    this.router.navigate(['/admin/users']);
+    try {
+
+      this.institutionUser = this.institutionUserForm.value as InstitutionUser;
+      await this.institutionService.configuration(this.institutionUser).toPromise();
+      this.router.navigate(['/admin/users']);  
+
+    } catch (error) {
+      this.util.handleError(error);
+    }
   }
 
   initForm() {
@@ -70,4 +89,38 @@ export class InstitutionUserFormComponent implements OnInit {
   }
 
   get f() { return this.institutionUserForm.controls; }
+
+  /**
+   * Save all configuration
+   */
+  public async saveConfiguration(){
+    try {
+      this.util.loading();
+      const ids = this.institutions.map(inst => {
+        if(inst.active){
+          return inst.id;
+        }
+      });
+  
+      const response = await this.institutionService.saveConfigurationByUserId(this.userId, ids)
+      .toPromise() as InstitutionConfiguration[];
+  
+      this.institutions = response;
+      this.router.navigate(['/admin/users']);  
+      
+      this.util.cancelLoading();
+    } catch (error) {
+      this.util.handleError(error);
+    }
+    
+  }
+
+  onChange(event:any, id: number){
+
+    for(let inst of this.institutions){
+      if(inst.id === id){
+        inst.active = event;
+      }
+    }
+  }
 }

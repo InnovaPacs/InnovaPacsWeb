@@ -35,7 +35,11 @@
                       <td>{{ user.email }}</td>
                       <td>{{ user.username }}</td>
                       <td [ngClass]="{'text-success': user.active, 'text-danger': !user.active }">{{ user.active ? 'Activo':'Inactivo'}}</td>
-                      <td>{{ user.institutions}}</td>
+                      <td>
+                        <ul *ngFor="let inst of user.institutions ">
+                          <li>{{ inst }}</li>
+                        </ul>
+                      </td>
                       <td>
                         <div class="dropdown">
                           <a class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
