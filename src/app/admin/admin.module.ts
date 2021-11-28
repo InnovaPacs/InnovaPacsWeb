@@ -17,10 +17,12 @@ import { InstitutionReportComponent } from './components/institution-report/inst
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { InstitutionComponent } from './components/institution/institution.component';
 import { ShareModule } from '../share/share.module';
+import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
+import { DiagnosisFormComponent } from './components/diagnosis-form/diagnosis-form.component';
 
 
 @NgModule({
-  declarations: [PatientComponent, StudyComponent, FooterComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent, ShareStudyComponent, InstitutionReportComponent, InstitutionComponent],
+  declarations: [PatientComponent, StudyComponent, FooterComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent, ShareStudyComponent, InstitutionReportComponent, InstitutionComponent, DiagnosisComponent, DiagnosisFormComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

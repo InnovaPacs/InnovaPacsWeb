@@ -1,7 +1,7 @@
 <div>
   <div class="card mt-4">
       <div class="card-body">
-          <h5 class="card-title pb-3">{{ title }}</h5>
+          <h1 class="card-title pb-3">{{ title }}</h1>
           <form [formGroup] = "userForm" class="row" *ngIf="user" (ngSubmit)="onSubmit()">
               
               <label class="col-form-label col-md-2" for="username" >Nombre de usuario:</label>

@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="header">
+                    <h1>Diagnósticos</h1>
+                    <a [routerLink]="['/admin/diagnosis/form/', {studyPk: studyPk}]"
+                        class="btn btn-primary">
+                        <fa-icon class="icon" ></fa-icon>
+                        Registrar
+                    </a>
+                </div>
+                <hr>
+                <div class="table-responsive mt-3">
+                    <table class="table vm no-th-brd no-wrap pro-of-month">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Fecha de creación</th>
+                                <th>Creador</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let diagnosis of diagnostics">
+                                <td class="text-nowrap">{{ diagnosis.title }}</td>
+                                <td>{{ diagnosis.created | date:'shortDate' }}</td>
+                                <td>{{ diagnosis.creator }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <fa-icon class="icon" [icon]="faTasks"></fa-icon>
+                                          Acciones 
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                          <button class="dropdown-item"
+                                            [disabled] = "diagnosis.fileId === null"
+                                            (click)="goToContractPdf(diagnosis)" >
+                                            <fa-icon class="icon" [icon]="diagnosis.fileId === null ? faEyeSlash: faEye"></fa-icon>
+                                            Ver diagnostico
+                                          </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <app-alert [show]="alertShow" 
+                        [message]="alertMessage"
+                        [type]="alertType">
+                    </app-alert>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

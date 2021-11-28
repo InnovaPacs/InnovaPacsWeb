@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/core/service/notification.service';
 import { StudyService } from 'src/app/core/service/study.service';
 import { Util } from 'src/app/core/util/util';
 import Swal from 'sweetalert2';
-import { faFilter, faPowerOff, faSearch, faTrashAlt, faTasks, faEye, faCogs, faShareAlt, faShareSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'; 
+import { faLaptopMedical, faFilter, faPowerOff, faSearch, faTrashAlt, faTasks, faEye, faCogs, faShareAlt, faShareSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'; 
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -31,6 +31,7 @@ export class FullStudiesComponent implements OnInit {
   public faShareAlt = faShareAlt;
   public faShareSquare = faShareSquare;
   public faEnvelope = faEnvelope;
+  public faLaptopCode = faLaptopMedical;
 
   public showFilter = false;
   public studies: FullStudy[] = [];
