@@ -13,7 +13,7 @@
                         role="tab" 
                         aria-controls="pills-home" 
                         aria-selected="true"
-                        >Subir PDF como diagnostico</a>
+                        >Subir PDF como diagnóstico</a>
                 </li>
                 <!--
                 <li class="nav-item">
@@ -25,7 +25,7 @@
                         role="tab" 
                         aria-controls="pills-profile"
                         aria-selected="false"
-                        (click)="custonDiagnosis = !custonDiagnosis">Redactar diagnostico</a>
+                        (click)="custonDiagnosis = !custonDiagnosis">Redactar diagnóstico</a>
                 </li>
                 -->
             </ul>
@@ -33,7 +33,7 @@
 
             <form [formGroup] = "diagnosisForm" class="row" *ngIf="diagnosis" (ngSubmit)="onSubmit()">
                 
-                <label class="col-form-label col-md-2" for="title" >Titulo del diagnostico:</label>
+                <label class="col-form-label col-md-2" for="title" >Titulo del diagnóstico:</label>
                 <div class="col-md-4 pb-3">
                     <input type="text" class="form-control" formControlName="title" name="title" id="title" 
                     [ngClass]="{ 'is-invalid': submitted && f.title.errors }">

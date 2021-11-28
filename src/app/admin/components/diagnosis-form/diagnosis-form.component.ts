@@ -15,7 +15,7 @@ import { InnovaFile } from 'src/app/core/model/innovaFile';
 })
 export class DiagnosisFormComponent implements OnInit {
   public diagnosis: DiagnosisDto = new DiagnosisDto();
-  public title = 'Registrar diagnostico';
+  public title = 'Registrar diagnóstico';
   public diagnosisForm: FormGroup;
   public faPenSquare = faPenSquare;
   public submitted = false;
@@ -98,12 +98,12 @@ export class DiagnosisFormComponent implements OnInit {
 
       if (this.diagnosis.id !== null) {
         const response = await this.diagnosisService.update(this.diagnosis).toPromise();
-        this.util.successMessage('El diagnostico se actulizo correctamente');
+        this.util.successMessage('El diagnóstico se actulizo correctamente');
         this.studyPk = this.diagnosis.studyId;
 
       } else {
         const response = await this.diagnosisService.create(this.diagnosis).toPromise();
-        this.util.successMessage('El diagnostico se creo correctamente');
+        this.util.successMessage('El diagnóstico se creo correctamente');
       }
 
       this.router.navigate([`/admin/diagnosis/study/${this.studyPk}`]);

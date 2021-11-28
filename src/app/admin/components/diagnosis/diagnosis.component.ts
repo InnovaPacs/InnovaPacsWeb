@@ -19,7 +19,7 @@ export class DiagnosisComponent implements OnInit {
   public faEyeSlash = faEyeSlash;
 
   public alertShow = false;
-  public alertMessage = 'No hay diagnosticos relacionados con el estidio seleccionado.';
+  public alertMessage = 'No hay diagnósticos relacionados con el estidio seleccionado.';
   public alertType = 'warning';
   public studyPk: number;
 
