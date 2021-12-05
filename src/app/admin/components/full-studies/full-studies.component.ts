@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { compareAsc } from 'date-fns/fp';
-import { FullStudy } from 'src/app/core/model/fullStudy';
+import { FullStudy, FullStudyCount } from 'src/app/core/model/fullStudy';
 import { StudyFilter } from 'src/app/core/model/StudyFilter';
 import { Institution } from 'src/app/core/model/institution';
 import { Modality } from 'src/app/core/model/modality';
@@ -42,6 +42,7 @@ export class FullStudiesComponent implements OnInit {
   public modalities: Modality[] = [];
   public patientPk;
   public uuid: string;
+  public fullStudyCount: FullStudyCount;
   
   public alertShow = false;
   public alertMessage = 'No hay estudios relacionados con la busqueda o bien su usuario no tiene relacionado una institución.';
@@ -61,16 +62,23 @@ export class FullStudiesComponent implements OnInit {
 
   }
 
-  public load() {
+  public async load() {
     this.util.loading();
-    this.studyService.findFullStudies().subscribe(response => {
-      this.studies = response;
-      console.log( this.studies);
-      
-      this.alertShow = this.studies.length === 0; 
-      this.util.cancelLoading();
 
-    }, (error) => this.util.handleError(error));
+    try {
+      this.fullStudyCount = await this.studyService.findFullStudiesCount()
+      .toPromise() as FullStudyCount;
+ 
+      console.log(this.fullStudyCount);
+      
+      this.studies = await this.studyService.findFullStudies()
+        .toPromise() as FullStudy[];
+
+      this.alertShow = this.studies.length === 0; 
+      this.util.cancelLoading(); 
+    } catch (error) {
+      this.util.handleError(error)
+    }
   }
 
   private async initList(){
@@ -101,6 +109,8 @@ export class FullStudiesComponent implements OnInit {
   public async filter(){
     const filter = this.filterForm.value as StudyFilter;
     this.studies = await this.studyService.findFullStudiesWithFilter(filter).toPromise();
+    this.fullStudyCount = await this.studyService.findFullStudiesCountWithFilter(filter).toPromise();
+
     this.alertShow = this.studies.length === 0;
   }
 

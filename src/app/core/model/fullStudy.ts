@@ -16,3 +16,9 @@ export interface FullStudy {
 	institution: string;
 	email: string;
 }
+
+export interface FullStudyCount {
+	studyCount: number;
+	instancesCount: number;
+	modalityCount: number;
+  }

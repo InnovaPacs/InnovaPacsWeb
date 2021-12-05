@@ -82,35 +82,26 @@
           
             <div class="table-responsive mt-3">
               <table class="table vm no-th-brd no-wrap pro-of-month">
-                  <thead>
+                  <thead >
                       <tr>
-                        <th>Institución</th>
-                        <th>Paciente Id</th>
+                        <th>Acciones</th>
                         <th>Nombre Paciente</th>
-                        <th>Fecha de Nacimiento</th>
-                        <th>Genero</th>
-                        <th>Email</th>
-                        <th>Fecha de Recepción</th>
                         <th>Fecha de Estudio</th>
-                        <th>Descripción</th>
+                        <th>Email</th>
                         <th>Modalidad</th>
                         <th>Núm. Instancias</th>
-                        <th>Acciones</th>
+                        <th>Descripción</th>
+                        <th>Fecha de Recepción</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Genero</th>
+                        <th>Paciente Id</th>
+                        <!--
+                        <th>Institución</th>
+                        -->            
                       </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let study of studies">
-                      <td class="text-nowrap"> {{ study.institution }}</td>
-                      <td>{{ study.patientId }}</td>
-                      <td class="text-nowrap">{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</td>
-                      <td class="text-nowrap">{{ study.birtdDate | date:'shortDate'}}</td>
-                      <td class="text-center">{{ study.patientSex }}</td>
-                      <td class="text-center">{{ study.email }} {{study.studyUID}}</td>
-                      <td class="text-nowrap">{{ study.createdTime | date:'shortDate' }}</td>
-                      <td class="text-nowrap">{{ study.date | date:'shortDate' }}</td>
-                      <td>{{ study.desc }}</td>
-                      <td class="text-center"><span [class]="util.badge(study.modality)">{{ study.modality }}</span></td>
-                      <td class="text-center"><span class="label label-inverse">{{ study.numInstances }}</span></td>
                       <td>
                         <div class="dropdown">
                           <a class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -144,6 +135,26 @@
                           </div>
                         </div>
                       </td>
+                      <td class="text-nowrap">{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</td>
+                      <td class="text-nowrap">{{ study.createdTime | date:'shortDate' }}</td>
+                      <td class="text-center">{{ study.email }} {{study.studyUID}}</td>
+                      <td class="text-center"><span [class]="util.badge(study.modality)">{{ study.modality }}</span></td>
+                      <td class="text-center"><span class="label label-inverse">{{ study.numInstances }}</span></td>
+                      <td>{{ study.desc }}</td>
+                      <td class="text-nowrap">{{ study.date | date:'shortDate' }}</td>
+                      <td class="text-nowrap">{{ study.birtdDate | date:'shortDate'}}</td>
+                      <td class="text-center">{{ study.patientSex }}</td>
+                      <td>{{ study.patientId }}</td>
+                      <!--
+                      <td class="text-nowrap"> {{ study.institution }}</td>
+                      -->
+                    </tr>
+                  </tbody>
+                  <tbody style="font-size: 20;" *ngIf="fullStudyCount">
+                    <tr>
+                      <td><b class="text-primary"> Total Estudios</b>: {{ fullStudyCount.studyCount }}</td>
+                      <td><b class="text-primary">Total Instancias</b>: {{ fullStudyCount.instancesCount }}</td>
+                      <td><b class="text-primary">Total Modalidad</b>: {{ fullStudyCount.modalityCount }}</td>
                     </tr>
                   </tbody>
               </table>
@@ -156,7 +167,6 @@
       </div>
   </div>
 </div>
-
 <!--Email configuration modal-->
 <app-configure-email [patientPk]="patientPk" (refreshEvent)="load()"></app-configure-email>
 <app-share-study [uuid]="uuid"></app-share-study>
