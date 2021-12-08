@@ -136,13 +136,13 @@
                         </div>
                       </td>
                       <td class="text-nowrap">{{ study.middleName }} {{ study.familyName }} {{ study.givenName }}</td>
-                      <td class="text-nowrap">{{ study.createdTime | date:'shortDate' }}</td>
+                      <td class="text-nowrap">{{ study.createdTime | date:'dd-MM-yyyy' }}</td>
                       <td class="text-center">{{ study.email }} {{study.studyUID}}</td>
                       <td class="text-center"><span [class]="util.badge(study.modality)">{{ study.modality }}</span></td>
                       <td class="text-center"><span class="label label-inverse">{{ study.numInstances }}</span></td>
                       <td>{{ study.desc }}</td>
-                      <td class="text-nowrap">{{ study.date | date:'shortDate' }}</td>
-                      <td class="text-nowrap">{{ study.birtdDate | date:'shortDate'}}</td>
+                      <td class="text-nowrap">{{ study.date | date:'dd-MM-yyyy' }}</td>
+                      <td class="text-nowrap">{{ study.birtdDate | date:'dd-MM-yyyy'}}</td>
                       <td class="text-center">{{ study.patientSex }}</td>
                       <td>{{ study.patientId }}</td>
                       <!--

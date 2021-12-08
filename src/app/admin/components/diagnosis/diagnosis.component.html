@@ -24,7 +24,7 @@
                         <tbody>
                             <tr *ngFor="let diagnosis of diagnostics">
                                 <td class="text-nowrap">{{ diagnosis.title }}</td>
-                                <td>{{ diagnosis.created | date:'shortDate' }}</td>
+                                <td>{{ diagnosis.created | date:'dd-MM-yyyy' }}</td>
                                 <td>{{ diagnosis.creator }}</td>
                                 <td>
                                     <div class="dropdown">
