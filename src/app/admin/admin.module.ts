@@ -19,10 +19,11 @@ import { InstitutionComponent } from './components/institution/institution.compo
 import { ShareModule } from '../share/share.module';
 import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
 import { DiagnosisFormComponent } from './components/diagnosis-form/diagnosis-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
-  declarations: [PatientComponent, StudyComponent, FooterComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent, ShareStudyComponent, InstitutionReportComponent, InstitutionComponent, DiagnosisComponent, DiagnosisFormComponent],
+  declarations: [PatientComponent, StudyComponent, FooterComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent, ShareStudyComponent, InstitutionReportComponent, InstitutionComponent, DiagnosisComponent, DiagnosisFormComponent, ProfileComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

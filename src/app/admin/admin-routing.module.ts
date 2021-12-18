@@ -7,6 +7,7 @@ import { InstitutionReportComponent } from './components/institution-report/inst
 import { InstitutionUserFormComponent } from './components/institution-user-form/institution-user-form.component';
 import { InstitutionComponent } from './components/institution/institution.component';
 import { PatientComponent } from './components/patient/patient.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { StudyComponent } from './components/study/study.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserComponent } from './components/user/user.component';
@@ -60,6 +61,11 @@ const routes: Routes = [
   {
     path: 'diagnosis/study/:studyPk',
     component: DiagnosisComponent,
+  }
+  ,
+  {
+    path: 'diagnosis/profile',
+    component: ProfileComponent,
   }
 ];
 
