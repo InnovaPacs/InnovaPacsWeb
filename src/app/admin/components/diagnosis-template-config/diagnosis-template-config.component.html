@@ -1,0 +1,44 @@
+<div>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h1 class="card-title pb-3">{{ title }}</h1>
+            <form [formGroup] = "diagnosisTemplateConfigForm" class="row" *ngIf="diagnosisTemplateConfig" (ngSubmit)="onSubmit()">
+                
+                <label class="col-form-label col-md-2" for="templateName" >Nombre de template:</label>
+                <div class="col-md-4 pb-3">
+                    <input type="text" class="form-control" formControlName="templateName" name="templateName" id="templateName" 
+                    [ngClass]="{ 'is-invalid': submitted && f.templateName.errors }">
+                </div>
+  
+                <label class="col-form-label col-md-2" for="headerColor" >Color de cabecera:</label>
+                <div class="col-md-4 pb-3">
+                    <input type="color" formControlName="headerColor" name="headerColor" id="headerColor" >
+                    <p class="text-danger" *ngIf="submitted && f.headerColor.errors"><b>Seleccien un color</b> </p>
+                </div>
+
+                <label class="col-form-label col-md-2" for="Logo" >Logo tipo:</label>
+                <div class="col-md-4 pb-3">
+                    <input type="file" class="form-control" name="Logo" id="Logo" 
+                        accept="image/png, image/gif, image/jpeg"
+                        (change)="saveFile($event.target.files)">
+                    <p class="text-danger"><b>Recomendamos subir un archivo de 200X80 px</b></p>
+                </div>
+
+                <div class="form-group row pl-3 col-sm-12">
+                    <div class="col-sm-6">
+                      <button class="btn btn-primary" type="submit"
+                      *ngIf="!diagnosisTemplateConfig.id else elseBlock" >Crear</button>
+                      
+                      <ng-template #elseBlock>
+                          <button class="btn btn-primary" type="submit">
+                            <fa-icon class="icon" [icon]="faPenSquare"></fa-icon>
+                            Editar
+                          </button>
+                      </ng-template>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+  

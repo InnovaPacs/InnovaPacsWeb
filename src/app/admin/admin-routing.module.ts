@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DiagnosisTemplateConfig } from '../core/model/diagnosisTemplateConfig';
 import { DiagnosisFormComponent } from './components/diagnosis-form/diagnosis-form.component';
+import { DiagnosisTemplateConfigComponent } from './components/diagnosis-template-config/diagnosis-template-config.component';
 import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
 import { FullStudiesComponent } from './components/full-studies/full-studies.component';
 import { InstitutionReportComponent } from './components/institution-report/institution-report.component';
@@ -66,6 +68,10 @@ const routes: Routes = [
   {
     path: 'diagnosis/profile',
     component: ProfileComponent,
+  },
+  {
+    path: 'diagnosis/template',
+    component: DiagnosisTemplateConfigComponent,
   }
 ];
 

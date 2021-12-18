@@ -20,10 +20,11 @@ import { ShareModule } from '../share/share.module';
 import { DiagnosisComponent } from './components/diagnosis/diagnosis.component';
 import { DiagnosisFormComponent } from './components/diagnosis-form/diagnosis-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { DiagnosisTemplateConfigComponent } from './components/diagnosis-template-config/diagnosis-template-config.component';
 
 
 @NgModule({
-  declarations: [PatientComponent, StudyComponent, FooterComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent, ShareStudyComponent, InstitutionReportComponent, InstitutionComponent, DiagnosisComponent, DiagnosisFormComponent, ProfileComponent],
+  declarations: [PatientComponent, StudyComponent, FooterComponent, FullStudiesComponent, UserComponent, UserFormComponent, InstitutionUserFormComponent, ConfigureEmailComponent, ShareStudyComponent, InstitutionReportComponent, InstitutionComponent, DiagnosisComponent, DiagnosisFormComponent, ProfileComponent, DiagnosisTemplateConfigComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
