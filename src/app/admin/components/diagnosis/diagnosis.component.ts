@@ -44,8 +44,6 @@ export class DiagnosisComponent implements OnInit {
             .toPromise() as Diagnosis[];
           this.alertShow = this.diagnostics.length === 0;
 
-          console.log(this.diagnostics);
-          
           this.util.cancelLoading();
         } catch (error) {
           this.util.handleError(error);

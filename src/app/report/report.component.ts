@@ -169,8 +169,6 @@ export class ReportComponent implements OnInit {
       (response: any) => {
         let file = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
         this.linkPDF = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
-        console.log(this.linkPDF);
-        
       },
       (error) => {
         console.log(error);

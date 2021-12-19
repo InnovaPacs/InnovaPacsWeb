@@ -61,8 +61,6 @@ export class InstitutionService {
    * @returns 
    */
   public saveConfigurationByUserId(userId: number, ids: number[] ) {
-    console.log('saveConfigurationByUserId');
-    
     return this.http.post(`${this.API}api/v1/institutions/user/${userId}`,
     ids, {'headers': this.authService.getHeader()});
   }

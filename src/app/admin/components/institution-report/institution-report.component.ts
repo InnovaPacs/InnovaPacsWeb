@@ -168,9 +168,9 @@ export class InstitutionReportComponent implements OnInit {
   public generateReport(intitutionId: number){
     this.institutionService.generateReport(intitutionId).subscribe(
       (response: any) => {
+        
         let file = new Blob([response], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
         this.linkPDF = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(file));
-        console.log(this.linkPDF);
         
       },
       (error) => {

@@ -13,9 +13,10 @@
                         role="tab" 
                         aria-controls="pills-home" 
                         aria-selected="true"
+                        (click)="custonDiagnosis = !custonDiagnosis"
                         >Subir PDF como diagnóstico</a>
                 </li>
-                <!--
+                
                 <li class="nav-item">
                     <a  
                         [ngClass]="!custonDiagnosis ? 'nav-link active' : 'nav-link'"
@@ -25,9 +26,9 @@
                         role="tab" 
                         aria-controls="pills-profile"
                         aria-selected="false"
-                        (click)="custonDiagnosis = !custonDiagnosis">Redactar diagnóstico</a>
+                        (click)="creatDiagnosis()">Redactar diagnóstico</a>
                 </li>
-                -->
+                
             </ul>
             
 
@@ -44,16 +45,21 @@
                 -->
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        
                         <div class="col-md-6 pb-3">
                             <input type="file" class="form-control" 
                                 id="diagnosisFile" accept="application/pdf"
                                 (change)="uploadFile($event)">
                             <label class="input-group-text" for="diagnosisFile">Upload</label>
                         </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
+                        <label class="col-form-label col-md-2" for="diagnosis" >Diagnóstico:</label>
+                        <div class="col-md-10 pb-3">
+                            <textarea class="form-control" formControlName="diagnosis" name="diagnosis" id="diagnosis" cols="30" rows="5"></textarea>
+                        </div>
                     </div>
                 </div>
 

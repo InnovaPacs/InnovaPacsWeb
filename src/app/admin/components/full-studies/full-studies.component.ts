@@ -68,8 +68,6 @@ export class FullStudiesComponent implements OnInit {
     try {
       this.fullStudyCount = await this.studyService.findFullStudiesCount()
       .toPromise() as FullStudyCount;
- 
-      console.log(this.fullStudyCount);
       
       this.studies = await this.studyService.findFullStudies()
         .toPromise() as FullStudy[];

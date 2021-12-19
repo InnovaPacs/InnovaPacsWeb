@@ -44,8 +44,6 @@ export class DiagnosisTemplateConfigComponent implements OnInit {
       
       this.diagnosisTemplateConfig = await this.diagnosisTemplateConfigService.findTemplate().toPromise() as DiagnosisTemplateConfig;
     
-      console.log(this.diagnosisTemplateConfig);
-      
       if(!this.diagnosisTemplateConfig){
         this.diagnosisTemplateConfig = new DiagnosisTemplateConfig();
       }else {
@@ -85,13 +83,10 @@ export class DiagnosisTemplateConfigComponent implements OnInit {
     
     try {
 
-      if(!this.diagnosisTemplateConfig.id){
-        console.log('Create');
-        
+      if(!this.diagnosisTemplateConfig.id){    
         await this.diagnosisTemplateConfigService.save(this.diagnosisTemplateConfig).toPromise();
         this.util.successMessage('Su perfil se configuro correctamente');
       }else{
-        console.log('Update');
         await this.diagnosisTemplateConfigService.update(this.diagnosisTemplateConfig).toPromise();
         this.util.successMessage('Su perfil se actualizo correctamente');
       }

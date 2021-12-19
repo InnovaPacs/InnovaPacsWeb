@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
   constructor(private doctorProfileService: DoctorProfileService, 
               public util: Util,
               private router: Router,
-              private activatedRoute: ActivatedRoute,
               private formBuilder: FormBuilder,) { }
 
   ngOnInit(): void {
@@ -38,7 +37,6 @@ export class ProfileComponent implements OnInit {
       this.util.loading();
       
       this.doctorProfile = await this.doctorProfileService.findDoctorProfile().toPromise() as DoctorProfile;
-      console.log(this.doctorProfile);
 
       if(!this.doctorProfile){
         this.doctorProfile = new DoctorProfile();
@@ -75,15 +73,10 @@ export class ProfileComponent implements OnInit {
     
     try {
 
-      console.log(this.doctorProfile);
-      
       if(!this.doctorProfile.id){
-        console.log('Create');
-        
         await this.doctorProfileService.save(this.doctorProfile).toPromise();
         this.util.successMessage('Su perfil se configuro correctamente');
       }else{
-        console.log('Update');
         await this.doctorProfileService.update(this.doctorProfile).toPromise();
         this.util.successMessage('Su perfil se actualizo correctamente');
       }

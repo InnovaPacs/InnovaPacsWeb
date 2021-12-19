@@ -7,6 +7,10 @@ import { DiagnosisService } from 'src/app/core/service/diagnosis.service';
 import { Util } from 'src/app/core/util/util';
 import { InnovaFileService } from 'src/app/core/service/innova-file.service';
 import { InnovaFile } from 'src/app/core/model/innovaFile';
+import { DoctorProfileService } from 'src/app/core/service/doctor-profile.service';
+import { DoctorProfile } from 'src/app/core/model/doctorProfile';
+import { DiagnosisTemplateConfigService } from 'src/app/core/service/diagnosis-template-config.service';
+import { DiagnosisTemplateConfig } from 'src/app/core/model/diagnosisTemplateConfig';
 
 @Component({
   selector: 'app-diagnosis-form',
@@ -28,7 +32,9 @@ export class DiagnosisFormComponent implements OnInit {
               private formBuilder: FormBuilder,
               private diagnosisService: DiagnosisService,
               private util: Util,
-              private innovaFileService: InnovaFileService) { }
+              private innovaFileService: InnovaFileService,
+              private doctorProfileService: DoctorProfileService,
+              private diagnosisTemplateConfigService: DiagnosisTemplateConfigService) { }
 
   ngOnInit(): void {
     this.load();
@@ -117,5 +123,24 @@ export class DiagnosisFormComponent implements OnInit {
 
   public uploadFile(event){
     this.file = event.target.files[0];
+  }
+
+  /**
+   * Create diagnosis
+   */
+  public async creatDiagnosis(){
+    this.custonDiagnosis = !this.custonDiagnosis;
+
+    const profile = await this.doctorProfileService.findDoctorProfile().toPromise() as DoctorProfile;
+    
+    if(!profile){
+      this.util.errorMessage('Antes de utilizar esta opción, por favor configura tu perfil');
+    }
+
+    const template = await this.diagnosisTemplateConfigService.findTemplate().toPromise() as DiagnosisTemplateConfig;
+    if(!template){
+      this.util.errorMessage('Antes de utilizar esta opción, por favor configura un template');
+    }
+
   }
 }

@@ -24,7 +24,6 @@ export class UserService {
   }
 
   public update(user: User, id: number) {
-    console.log("User: ",user);
     return this.http.put(`${this.API}api/v1/users/${id}`, user, {'headers': this.authService.getHeader()});
   }
 }
