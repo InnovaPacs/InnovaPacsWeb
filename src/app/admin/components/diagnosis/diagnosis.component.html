@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="header">
-                    <h1>Diagnósticos</h1>
+                    <h1>Interpretaciones</h1>
                     <a [routerLink]="['/admin/diagnosis/form/', {studyPk: studyPk}]"
                         class="btn btn-primary">
                         <fa-icon class="icon" ></fa-icon>
@@ -37,7 +37,13 @@
                                             [disabled] = "diagnosis.fileId === null"
                                             (click)="goToContractPdf(diagnosis)" >
                                             <fa-icon class="icon" [icon]="diagnosis.fileId === null ? faEyeSlash: faEye"></fa-icon>
-                                            Ver diagnóstico
+                                            Ver interpretación
+                                          </button>
+                                          <button class="dropdown-item"
+                                            [disabled] = "diagnosis.fileId === null"
+                                            (click)="confinmDelete(diagnosis.id)" >
+                                            <fa-icon class="icon" [icon]="faTrash"></fa-icon>
+                                            Elimiar interpretación
                                           </button>
                                         </div>
                                     </div>

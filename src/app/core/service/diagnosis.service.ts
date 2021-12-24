@@ -32,4 +32,8 @@ export class DiagnosisService {
     diagnosisDto,
     {'headers': this.authService.getHeader()});
   }
+
+  public deleteById(id: number) {
+    return this.http.delete(`${this.API}api/v1/diagnoses/${id}`, {'headers': this.authService.getHeader()});
+  }
 }
