@@ -23,7 +23,7 @@ export class AuthService {
     params.set('password', user.password);
     params.set('grant_type', environment.GRANT_TYPE);
 
-    return this.http.post<OAuth>(`${this.API}oauth/token`, params.toString(), {'headers': headers});
+    return this.http.post<OAuth>(`${this.API}oauth/token`, params.toString(), { headers });
   }
 
   handleSession(response): void {
