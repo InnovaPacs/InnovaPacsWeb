@@ -14,15 +14,15 @@ export class StudyService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   public findByPatientId(id: number) {
-    return this.http.get(`${this.API}api/v1/studies/patients/${id}`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/studies/patients/${id}`, {'headers': this.authService.getHeader()});
   }
 
   public findFullStudies(): Observable<FullStudy[]> {
-    return this.http.get<FullStudy[]>(`${this.API}api/v1/studies/full`, {'headers': this.authService.getHeader()});
+    return this.http.get<FullStudy[]>(`/innovaPacsApi/api/v1/studies/full`, {'headers': this.authService.getHeader()});
   }
 
   public findFullStudiesCount(): Observable<FullStudyCount> {
-    return this.http.get<FullStudyCount>(`${this.API}api/v1/studies/fullCount`, {'headers': this.authService.getHeader()});
+    return this.http.get<FullStudyCount>(`/innovaPacsApi/api/v1/studies/fullCount`, {'headers': this.authService.getHeader()});
   }
 
   public findFullStudiesWithFilter(filter: StudyFilter): Observable<FullStudy[]> {
@@ -37,7 +37,7 @@ export class StudyService {
     .set('studyDateEnd',filter.studyDateEnd !== null ? filter.studyDateEnd.toString() : null)
     .set('studyDateInit',filter.studyDateInit !== null ? filter.studyDateInit.toString() : null );
 
-    return this.http.get<FullStudy[]>(`${this.API}api/v1/studies/filter`, {'headers': this.authService.getHeader(), params: params });
+    return this.http.get<FullStudy[]>(`/innovaPacsApi/api/v1/studies/filter`, {'headers': this.authService.getHeader(), params: params });
   }
 
   public findFullStudiesCountWithFilter(filter: StudyFilter): Observable<FullStudyCount> {
@@ -52,6 +52,6 @@ export class StudyService {
     .set('studyDateEnd',filter.studyDateEnd !== null ? filter.studyDateEnd.toString() : null)
     .set('studyDateInit',filter.studyDateInit !== null ? filter.studyDateInit.toString() : null );
 
-    return this.http.get<FullStudyCount>(`${this.API}api/v1/studies/filterCount`, {'headers': this.authService.getHeader(), params: params });
+    return this.http.get<FullStudyCount>(`/innovaPacsApi/api/v1/studies/filterCount`, {'headers': this.authService.getHeader(), params: params });
   }
 }

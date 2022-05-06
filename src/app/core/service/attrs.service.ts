@@ -12,6 +12,6 @@ export class AttrsService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   public findAllModalities() {
-    return this.http.get(`${this.API}api/v1/attrs/modalities`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/attrs/modalities`, {'headers': this.authService.getHeader()});
   }
 }

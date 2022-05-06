@@ -13,27 +13,27 @@ export class InstitutionService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   public findAll() {
-    return this.http.get(`${this.API}api/v1/institutions`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/institutions`, {'headers': this.authService.getHeader()});
   }
 
   public configuration(institutionUser: InstitutionUser) {
-    return this.http.post(`${this.API}api/v1/institutions/configuration`, institutionUser, {'headers': this.authService.getHeader()});
+    return this.http.post(`/innovaPacsApi/api/v1/institutions/configuration`, institutionUser, {'headers': this.authService.getHeader()});
   }
 
   public modalityReport(institutionId: number) {
-    return this.http.get(`${this.API}api/v1/studies/institutions/${institutionId}/modalityReport`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/studies/institutions/${institutionId}/modalityReport`, {'headers': this.authService.getHeader()});
   }
 
   public institutionReport(institutionId: number) {
-    return this.http.get(`${this.API}api/v1/studies/institutions/${institutionId}/report`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/studies/institutions/${institutionId}/report`, {'headers': this.authService.getHeader()});
   }
 
   public getById(institutionId: number) {
-    return this.http.get(`${this.API}api/v1/institutions/${institutionId}`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/institutions/${institutionId}`, {'headers': this.authService.getHeader()});
   }
 
   public generateReport(intitutionId: number) {
-    return this.http.get(`${this.API}api/v1/institutions/report/${intitutionId}`, 
+    return this.http.get(`/innovaPacsApi/api/v1/institutions/report/${intitutionId}`,
     {
       'headers': this.authService.getHeader(),
       responseType: 'blob'
@@ -46,22 +46,22 @@ export class InstitutionService {
 
   /**
    * Fing configuration by id
-   * @param userId 
-   * @returns 
+   * @param userId
+   * @returns
    */
   public findConfigurationByUserId(userId: number) {
-    return this.http.get(`${this.API}api/v1/institutions/user/${userId}/configuration`,
+    return this.http.get(`/innovaPacsApi/api/v1/institutions/user/${userId}/configuration`,
     {'headers': this.authService.getHeader()});
   }
 
   /**
    * Save configuration by id
-   * @param userId 
-   * @param ids 
-   * @returns 
+   * @param userId
+   * @param ids
+   * @returns
    */
   public saveConfigurationByUserId(userId: number, ids: number[] ) {
-    return this.http.post(`${this.API}api/v1/institutions/user/${userId}`,
+    return this.http.post(`/innovaPacsApi/api/v1/institutions/user/${userId}`,
     ids, {'headers': this.authService.getHeader()});
   }
 }

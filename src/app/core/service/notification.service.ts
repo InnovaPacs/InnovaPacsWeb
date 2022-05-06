@@ -12,6 +12,6 @@ export class NotificationService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   public sendStudy(studyUID: string): Observable<any> {
-    return this.http.get<any>(`${this.API}api/v1/notifications/${studyUID}`, {'headers': this.authService.getHeader()});
+    return this.http.get<any>(`/innovaPacsApi/api/v1/notifications/${studyUID}`, {'headers': this.authService.getHeader()});
   }
 }

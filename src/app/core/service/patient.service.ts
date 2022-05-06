@@ -14,14 +14,14 @@ export class PatientService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   public findAll(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(`${this.API}api/v1/patients/`, {'headers': this.authService.getHeader()});
+    return this.http.get<Patient[]>(`/innovaPacsApi/api/v1/patients/`, {'headers': this.authService.getHeader()});
   }
 
   public findById(id: number) {
-    return this.http.get(`${this.API}api/v1/patients/${id}`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/patients/${id}`, {'headers': this.authService.getHeader()});
   }
 
   public configureEmail(emailConfiguration: EmailConfiguration) {
-    return this.http.put(`${this.API}api/v1/patients/`, emailConfiguration, {'headers': this.authService.getHeader()});
+    return this.http.put(`/innovaPacsApi/api/v1/patients/`, emailConfiguration, {'headers': this.authService.getHeader()});
   }
 }

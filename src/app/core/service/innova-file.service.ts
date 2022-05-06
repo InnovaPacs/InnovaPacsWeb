@@ -15,14 +15,14 @@ export class InnovaFileService {
     var formData = new FormData();
     formData.append('file', file);
 
-    return this.http.post(`${this.API}api/v1/innovaFiles`, 
+    return this.http.post(`/innovaPacsApi/api/v1/innovaFiles`,
       formData,
       {'headers': this.authService.getHeader()});
   }
 
   getFileByteArray(fileId: number) {
     return this.http
-      .get(`${this.API}api/v1/innovaFiles/${fileId}/download`, 
+      .get(`/innovaPacsApi/api/v1/innovaFiles/${fileId}/download`,
       {
         'headers': this.authService.getHeader(),
         'responseType': 'blob'

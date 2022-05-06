@@ -12,28 +12,28 @@ export class DiagnosisService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   public findAllByStudyId(studyId: number) {
-    return this.http.get(`${this.API}api/v1/diagnoses/study/${studyId}`, 
+    return this.http.get(`/innovaPacsApi/api/v1/diagnoses/study/${studyId}`,
       {'headers': this.authService.getHeader()});
   }
 
   public findById(diagnosisId: number) {
-    return this.http.get(`${this.API}api/v1/diagnoses/${diagnosisId}`, 
+    return this.http.get(`/innovaPacsApi/api/v1/diagnoses/${diagnosisId}`,
       {'headers': this.authService.getHeader()});
   }
 
   public update(diagnosisDto: DiagnosisDto) {
-    return this.http.put(`${this.API}api/v1/diagnoses`, 
+    return this.http.put(`/innovaPacsApi/api/v1/diagnoses`,
     diagnosisDto,
     {'headers': this.authService.getHeader()});
   }
 
   public create(diagnosisDto: DiagnosisDto) {
-    return this.http.post(`${this.API}api/v1/diagnoses`, 
+    return this.http.post(`/innovaPacsApi/api/v1/diagnoses`,
     diagnosisDto,
     {'headers': this.authService.getHeader()});
   }
 
   public deleteById(id: number) {
-    return this.http.delete(`${this.API}api/v1/diagnoses/${id}`, {'headers': this.authService.getHeader()});
+    return this.http.delete(`/innovaPacsApi/api/v1/diagnoses/${id}`, {'headers': this.authService.getHeader()});
   }
 }

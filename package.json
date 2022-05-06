@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0",
-    "build": "ng build",
+    "start": "ng serve",
+    "build": "ng build --prod --output-path ./dist/innova-pacs-web --base-href /innova-pacs-web/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:war": "gulp war"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,9 @@
     "@swimlane/ngx-charts": "^18.0.1",
     "bootstrap": "^4.6.0",
     "date-fns": "^2.22.1",
+    "gulp": "^4.0.2",
+    "gulp-war": "^0.1.4",
+    "gulp-zip": "^5.1.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.7",

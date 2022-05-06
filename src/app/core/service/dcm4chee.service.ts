@@ -11,13 +11,13 @@ import { AuthService } from './auth.service';
 export class Dcm4cheeService {
   private API = environment.API;
   constructor(private http: HttpClient, private authService: AuthService) { }
-  
+
   public findAllAet() {
-    return this.http.get(`${this.API}api/v1/dcm4Chee/aets`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/dcm4Chee/aets`, {'headers': this.authService.getHeader()});
   }
 
   public export(uuid: string, aets: string) {
-    return this.http.post(`${this.API}api/v1/dcm4Chee/export`,{
+    return this.http.post(`/innovaPacsApi/api/v1/dcm4Chee/export`,{
       uuid: uuid,
       aets: aets
     }, {'headers': this.authService.getHeader()});

@@ -12,17 +12,17 @@ export class DoctorProfileService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   public findDoctorProfile() {
-    return this.http.get(`${this.API}api/v1/doctorProfile/user`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/doctorProfile/user`, {'headers': this.authService.getHeader()});
   }
 
   public save(profile: DoctorProfile) {
-    return this.http.post(`${this.API}api/v1/doctorProfile`, 
+    return this.http.post(`/innovaPacsApi/api/v1/doctorProfile`,
     profile,
     {'headers': this.authService.getHeader()});
   }
 
   public update(profile: DoctorProfile) {
-    return this.http.put(`${this.API}api/v1/doctorProfile`, 
+    return this.http.put(`/innovaPacsApi/api/v1/doctorProfile`,
     profile,
     {'headers': this.authService.getHeader()});
   }

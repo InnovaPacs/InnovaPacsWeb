@@ -12,18 +12,18 @@ export class UserService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   public findAll() {
-    return this.http.get(`${this.API}api/v1/users/`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/users/`, {'headers': this.authService.getHeader()});
   }
 
   public findById(id: number) {
-    return this.http.get(`${this.API}api/v1/users/${id}`, {'headers': this.authService.getHeader()});
+    return this.http.get(`/innovaPacsApi/api/v1/users/${id}`, {'headers': this.authService.getHeader()});
   }
 
   public create(user: User) {
-    return this.http.post(`${this.API}api/v1/users/`, user, {'headers': this.authService.getHeader()});
+    return this.http.post(`/innovaPacsApi/api/v1/users/`, user, {'headers': this.authService.getHeader()});
   }
 
   public update(user: User, id: number) {
-    return this.http.put(`${this.API}api/v1/users/${id}`, user, {'headers': this.authService.getHeader()});
+    return this.http.put(`/innovaPacsApi/api/v1/users/${id}`, user, {'headers': this.authService.getHeader()});
   }
 }
