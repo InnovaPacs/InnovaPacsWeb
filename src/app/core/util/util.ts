@@ -23,7 +23,7 @@ export class Util {
   /**
    * Get modality
    * @param mmodality
-   * @returns 
+   * @returns
    */
   public getModlity(modality: string): string{
     return this.modalities[modality];
@@ -46,6 +46,8 @@ export class Util {
       return 'badge bg-dark';
     }else if (modality === 'XA'){
       return 'badge bg-primary'
+    }else if (modality === 'MG'){
+      return 'badge badge-danger'
     }
   }
 
@@ -53,7 +55,7 @@ export class Util {
    * Filter only text values.
    * @param array Array in which search the text.
    * @param filter Text to search
-   * @returns 
+   * @returns
    */
   public filterArrWithString(array: any[], filter: string) {
     let keys = Object.keys(array[0]);
@@ -64,7 +66,7 @@ export class Util {
           if (item[key] == '' || item[key] === undefined || item[key] === null || item[key] === false) {
             return false;
           }
-          
+
           return item[key].toString().toLowerCase().trim().includes(filter.toString().toLowerCase().trim());
         });
       });
