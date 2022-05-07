@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/core/service/notification.service';
 import { StudyService } from 'src/app/core/service/study.service';
 import { Util } from 'src/app/core/util/util';
 import Swal from 'sweetalert2';
-import { faLaptopMedical, faFilter, faPowerOff, faSearch, faTrashAlt, faTasks, faEye, faCogs, faShareAlt, faShareSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons'; 
+import { faLaptopMedical, faFilter, faPowerOff, faSearch, faTrashAlt, faTasks, faEye, faCogs, faShareAlt, faShareSquare, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -43,7 +43,7 @@ export class FullStudiesComponent implements OnInit {
   public patientPk;
   public uuid: string;
   public fullStudyCount: FullStudyCount;
-  
+
   public alertShow = false;
   public alertMessage = 'No hay estudios relacionados con la busqueda o bien su usuario no tiene relacionado una institución.';
   public alertType = 'warning';
@@ -68,12 +68,12 @@ export class FullStudiesComponent implements OnInit {
     try {
       this.fullStudyCount = await this.studyService.findFullStudiesCount()
       .toPromise() as FullStudyCount;
-      
+
       this.studies = await this.studyService.findFullStudies()
         .toPromise() as FullStudy[];
 
-      this.alertShow = this.studies.length === 0; 
-      this.util.cancelLoading(); 
+      this.alertShow = this.studies.length === 0;
+      this.util.cancelLoading();
     } catch (error) {
       this.util.handleError(error)
     }
@@ -86,7 +86,7 @@ export class FullStudiesComponent implements OnInit {
 
   public viewStudy(studyIuid: string){
     if(studyIuid){
-      window.open(`http://${this.host}:8080/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`, '_blank');
+      window.open(`http://${this.host}:8081/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`, '_blank');
     }
   }
 
@@ -115,13 +115,13 @@ export class FullStudiesComponent implements OnInit {
   public validateDate(option: number){
     let studyDateInit;
     let studyDateEnd;
-    
+
     if(option === 0){
       studyDateInit = this.filterForm.controls['studyDateInit'].value;
-      studyDateEnd = this.filterForm.controls['studyDateEnd'].value; 
+      studyDateEnd = this.filterForm.controls['studyDateEnd'].value;
     }
 
-    
+
     if(studyDateInit && studyDateEnd){
       const init = studyDateInit.split('-') as number[];
       const end = studyDateEnd.split('-') as number[];
