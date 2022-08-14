@@ -4,12 +4,11 @@
 
 export const environment = {
   production: false,
-  API: 'http://192.168.3.115:8081/innova-pacs/',
-  //DCM4CHEE_API: 'https://192.168.3.115:8443/dcm4chee-arc/',
+  API: 'http://localhost:8081/innova-pacs/',
   CLIENT_ID: 'InnovaPacs',
   CLIENT_SECRET: 'InnovaPacs2021',
   GRANT_TYPE: 'password',
-  HOST: '192.168.3.115',
+  HOST: '66.94.96.116',
 };
 /*
  * For easier debugging in development mode, you can import the following file
