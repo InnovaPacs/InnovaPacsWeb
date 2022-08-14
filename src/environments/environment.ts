@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  API: 'http://localhost:8081/innova-pacs/',
+  API: 'http://66.94.96.116:8081/innova-pacs/',
   CLIENT_ID: 'InnovaPacs',
   CLIENT_SECRET: 'InnovaPacs2021',
   GRANT_TYPE: 'password',
-  HOST: '66.94.96.116',
+  HOST: '66.94.96.116'
 };
 /*
  * For easier debugging in development mode, you can import the following file
