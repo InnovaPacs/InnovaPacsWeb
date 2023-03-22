@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  API: 'http://66.94.96.116:8090/innova-pacs/',
+  API: 'https://innova.pacs.api.persist.rocks/innova-pacs/',
   CLIENT_ID: 'InnovaPacs',
   CLIENT_SECRET: 'InnovaPacs2021',
   GRANT_TYPE: 'password',
-  HOST: '66.94.96.116'
+  HOST: 'innova.pacs.dcm4chee.persist.rocks'
 };
