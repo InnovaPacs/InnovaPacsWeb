@@ -86,6 +86,7 @@ export class FullStudiesComponent implements OnInit {
 
   public viewStudy(studyIuid: string){
     if(studyIuid){
+      console.log(`https://${this.host}/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`);
       window.open(`https://${this.host}/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`, '_blank');
     }
   }
