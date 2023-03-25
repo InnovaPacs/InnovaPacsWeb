@@ -21,6 +21,7 @@ import { environment } from 'src/environments/environment';
 })
 export class FullStudiesComponent implements OnInit {
   public host = environment.HOST;
+  public viewer_host = environment.VIEWER_HOST;
   public faFilter = faFilter;
   public faPowerOff = faPowerOff;
   public faSearch = faSearch;
@@ -86,7 +87,6 @@ export class FullStudiesComponent implements OnInit {
 
   public viewStudy(studyIuid: string){
     if(studyIuid){
-      console.log(`viewStudy: https://${this.host}/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`);
       window.open(`https://${this.host}/weasis-pacs-connector/weasis?studyUID=${studyIuid}&cdb`, '_blank');
     }
   }
@@ -94,7 +94,7 @@ export class FullStudiesComponent implements OnInit {
   public viewOviyamStudy(studyIuid: string){
     console.log('viewOviyamStudy');
     if(studyIuid){
-      window.open(`http://${this.host}/viewer.html?studyUID=${studyIuid}`, '_blank');
+      window.open(`http://${this.viewer_host}/viewer.html?studyUID=${studyIuid}`, '_blank');
     }
   }
 
