@@ -8,8 +8,8 @@ export const environment = {
   CLIENT_ID: 'InnovaPacs',
   CLIENT_SECRET: 'InnovaPacs2021',
   GRANT_TYPE: 'password',
-  HOST: '66.94.96.116',
-  VIEWER_HOST: 'innova.pacs.oviyam.persist.rocks'
+  HOST: '154.38.162.74:8090',
+  VIEWER_HOST: '154.38.162.74:90'
 };
 /*
  * For easier debugging in development mode, you can import the following file
