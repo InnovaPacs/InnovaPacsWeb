@@ -1,18 +1,18 @@
-<section id="wrapper" class="login-register login-sidebar" style="background-image:url(../assets/images/background/login-register.jpg);">
+<section id="wrapper" class="login-register login-sidebar" style="background-image:url(/innova-pacs/assets/images/background/login-register.jpg);">
     <div class="login-box card">
         <div class="card-body">
-            <form [formGroup] = "userForm" (ngSubmit)="login()" 
+            <form [formGroup] = "userForm" (ngSubmit)="login()"
                 class="form-horizontal form-material" id="loginform">
 
                 <a href="javascript:void(0)" class="text-center db">
-                    <img src="../assets/images/innovapacsicon.png" alt="Home" /><br/>
+                    <img src="/innova-pacs/assets/images/innovapacsicon.png" alt="Home" /><br/>
                 </a>
-                
+
                 <div class="form-group m-t-40">
                     <div class="col-xs-12">
-                        <input type="text" formControlName="username" 
+                        <input type="text" formControlName="username"
                             placeholder="Username" [class.is-valid]="isValidField('username')"
-                            [class.is-invalid]="!isValidField('username')" 
+                            [class.is-invalid]="!isValidField('username')"
                             class="form-control form-control-user">
                         <p class="messages" [class.active]="isValidField('username')"></p>
                     </div>
@@ -28,7 +28,7 @@
                 <div class="form-group row">
                     <div class="col-md-12">
                         <div class="checkbox checkbox-primary pull-left p-t-0">
-                            <input id="checkbox-signup" type="checkbox" 
+                            <input id="checkbox-signup" type="checkbox"
                                 class="filled-in chk-col-light-blue"
                                 formControlName="remember">
                             <label for="checkbox-signup"> Remember me </label>
